@@ -4,7 +4,7 @@
 3)
 '''
 
-#LIB REQUIRED IMPORTS
+# LIB REQUIRED IMPORTS
 from functools import partial
 import time
 import string
@@ -28,9 +28,10 @@ from conns import connections
 
 Window.size = (300, 560)
 
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-#GAME_
-#*********************************************************
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# GAME_
+# ********************************************************
+
 
 class Game(Screen):
     def __init__(self, **kw):
@@ -182,6 +183,7 @@ class Game(Screen):
         self.FM.write_file("SOCKET_DATA/GAME.txt", "", "w")
         MDApp.get_running_app().root.current = 'Home'
 
+
 class Lobby(Screen):
     def __init__(self, **kw):
         super().__init__(**kw)
@@ -252,8 +254,10 @@ class Lobby(Screen):
                 self.ids['Lobby'].text = "WAITING FOR MATCH"
                 pass
 
+
 class TABS(TabbedPanel):
     pass
+
 
 class Recycle(ScrollView):
     def __init__(self, **kw):
@@ -263,6 +267,7 @@ class Recycle(ScrollView):
     def card(self):
         print("TOUCHED")
 
+
 class RecycleOne(ScrollView):
     def __init__(self, **kw):
         super().__init__(**kw)
@@ -271,6 +276,7 @@ class RecycleOne(ScrollView):
     def card(self):
         print("TOUCHED")
 
+
 class RecycleTwo(ScrollView):
     def __init__(self, **kw):
         super().__init__(**kw)
@@ -278,15 +284,15 @@ class RecycleTwo(ScrollView):
     def card(self):
         print("TOUCHED")
 
+
 class Score(Screen):
     def __init__(self, **kw):
         super().__init__(**kw)
         self.FM = File_man()
         win = str(self.FM.read_file("SOCKET_DATA/game_over.txt"))
-        #print("WIN:?0", win)
+        # print("WIN:?0", win)
         self.ids['back'].text = str(win)
-        #print("DONE")
-
+        # print("DONE")
 
     def home(self):
         self.FM.write_file("SOCKET_DATA/GAME.txt", "END", "w")
@@ -297,8 +303,9 @@ class Score(Screen):
         MDApp.get_running_app().root.current = "Home"
 
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-#HOME_
-#*********************************************************
+# HOME_
+# ********************************************************
+
 
 class Home(BoxLayout):
     def __init__(self, **kw):
@@ -335,11 +342,15 @@ class Home(BoxLayout):
     def move(self):
         MDApp.get_running_app().root.current = 'Lobby'
 
+
+    #GRAPHIC THINGS
+
     def store_on(self):
         self.ids.store_image.source = 'ASSETS/Buttons/OffStore.png'
 
     def store_off(self):
         self.ids.store_image.source = 'ASSETS/Buttons/OnStore.png'
+        MDApp.get_running_app().root.current = "Store"
 
     def PlayG_on(self):
         self.ids.PlayG_image.source = 'ASSETS/Buttons/OffPlayG.png'
@@ -352,54 +363,72 @@ class Home(BoxLayout):
 
     def rank_off(self):
         self.ids.rank_image.source = 'ASSETS/Buttons/OnRank.png'
+        MDApp.get_running_app().root.current = "RankG"
 
     def settings_on(self):
         self.ids.settings_image.source = 'ASSETS/Buttons/OffSettings.png'
 
     def settings_off(self):
         self.ids.settings_image.source = 'ASSETS/Buttons/OnSettings.png'
+        Settings().open()
 
 
-
-
-    #OFFER_WALL
-    #************^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    def ads(self):
-        if self.ads_count == 3:
-            print("OUT_OF_ADS")
-            return
-        print("PLAYING ADD")
-        self.ads_count+=1
-        MDApp.get_running_app().root.current ="AdsBank"
-
-
-        if self.ads_count == 1:
-            self.ads_bank += "ONE"
-            self.FM.write_file("ADS_BANK.txt", self.ads_bank, "w")
-        if self.ads_count == 2:
-            self.ads_bank += "TWO"
-            self.FM.write_file("ADS_BANK.txt", self.ads_bank, "w")
-        if self.ads_count == 3:
-            self.ads_bank += "THREE"
-            self.FM.write_file("ADS_BANK.txt", self.ads_bank, "w")
-
-        print("ADD COMPLETE:: \nCOUNT:: ",self.ads_count)
-
-class AdsBank(Screen):
+class Settings(Popup):
     def __init__(self, **kw):
         super().__init__(**kw)
         pass
-    def play(self):
-        print("PLAYING_ADD")
-        self.ids['back'].text = "DONE"
-        time.sleep(1)
-        MDApp.get_running_app().root.current ="Page"
+
+    # GRAPHIC THINGS
+
+    def sound_on(self):
+        self.ids.Sound_image.source = 'ASSETS/Buttons/OffSound.png'
+
+    def sound_off(self):
+        self.ids.Sound_image.source = 'ASSETS/Buttons/OnSound.png'
+
+    def music_on(self):
+        self.ids.Music_image.source = 'ASSETS/Buttons/OffSound.png'
+
+    def music_off(self):
+        self.ids.Music_image.source = 'ASSETS/Buttons/OnSound.png'
+
+    def report_on(self):
+        self.ids.Report_image.source = 'ASSETS/Buttons/OffReport.png'
+
+    def report_off(self):
+        self.ids.Report_image.source = 'ASSETS/Buttons/OnReport.png'
+
+    def logout_on(self):
+        self.ids.Logout_image.source = 'ASSETS/Buttons/OffLogout.png'
+
+    def logout_off(self):
+        self.ids.Logout_image.source = 'ASSETS/Buttons/OnLogout.png'
 
     def back_on(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OffBack.png'
 
     def back_off(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
+        MDApp.get_running_app().root.current = "Home"
+
+class Store(Screen):
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        pass
+
+    def play(self):
+        print("PLAYING_ADD")
+
+    # Video go's Here
+
+    # GRAPHIC THINGS
+
+    def back_on(self):
+        self.ids.back_image.source = 'ASSETS/Buttons/OffBack.png'
+
+    def back_off(self):
+        self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
+        MDApp.get_running_app().root.current = "Home"
 
     def play_on(self):
         self.ids.play_image.source = 'ASSETS/Buttons/OffPlay.png'
@@ -407,31 +436,50 @@ class AdsBank(Screen):
     def play_off(self):
         self.ids.play_image.source = 'ASSETS/Buttons/OnPlay.png'
 
-class RankG(BoxLayout):
+
+class RankG(Screen):
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        pass
+
+    # GRAPHIC THINGS
+
     def back_on(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OffBack.png'
 
     def back_off(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
+        MDApp.get_running_app().root.current = "Home"
 
     def rankl_on(self):
         self.ids.rankl_image.source = 'ASSETS/Buttons/OffRankL.png'
 
     def rankl_off(self):
         self.ids.rankl_image.source = 'ASSETS/Buttons/OnRankL.png'
+        MDApp.get_running_app().root.current = "RankL"
 
-class RankL(BoxLayout):
+
+class RankL(Screen):
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        pass
+
+    # GRAPHIC THINGS
+
     def back_on(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OffBack.png'
 
     def back_off(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
+        MDApp.get_running_app().root.current = "Home"
 
     def rankg_on(self):
         self.ids.rankg_image.source = 'ASSETS/Buttons/OffRankG.png'
 
     def rankg_off(self):
         self.ids.rankg_image.source = 'ASSETS/Buttons/OnRankG.png'
+        MDApp.get_running_app().root.current = "RankG"
+
 
 class Register(Popup):
     def __init__(self, **kw):
@@ -440,31 +488,19 @@ class Register(Popup):
         self.gender = ""
         self.selected = False
 
-    def back_on(self):
-        self.ids.back_image.source = 'ASSETS/Buttons/OffBack.png'
-
-    def back_off(self):
-        self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
-
-    def submit_on(self):
-        self.ids.submit_image.source = 'ASSETS/Buttons/OffSubmit.png'
-
-    def submit_off(self):
-        self.ids.submit_image.source = 'ASSETS/Buttons/OnSubmit.png'
-
     def gender_select(self, inst):
-        if self.selected == True:
+        if self.selected is True:
             self.selected = False
             self.ids['Male'].disabled = False
             self.ids['Female'].disabled = False
             return
-        if "Male" in inst and self.selected == False:
+        if "Male" in inst and self.selected is False:
             self.gender = "Male" 
             print(":SET:ID:icon:", str(self.gender))
             self.ids['Female'].disabled = True
             self.selected = True
             return
-        if "Female" in inst and self.selected == False:
+        if "Female" in inst and self.selected is False:
             self.gender = "Female" 
             print(":SET:ID:icon:", str(self.gender))
             self.ids['Male'].disabled = True
@@ -479,52 +515,50 @@ class Register(Popup):
                 print("MONTH_NUMBER:: ", str(i+1))
                 return int(i+1)
 
-    def select_Icon(self, day, month_name):
+    def select_icon(self, day, month_name):
         month = int(self.name_to_num(month_name))
         try:
-            
             day = int(day)
             month = int(month)
             if day>=21 and month >=3 and month <= 4:
                 print("WHAT DA>>?")
 #            print(f"\n\n\nVALS --{day}:{month}--", "\n\n*************************************")
 
-
-            if month >= 3 and month <=4:#MARCH
-                if day <= 19 or day >= 21:#APRIL
+            if month >= 3 and month <=4:  # MARCH
+                if day <= 19 or day >= 21:  # APRIL
                     return "Aries"
-            elif month >=4 and month <=5:#APRIL 
-                if  day >= 20 or day <=20:#MAY 
+            elif month >=4 and month <=5:  # APRIL
+                if  day >= 20 or day <=20:  # MAY
                     return "Taurus"
-            elif month >= 5 and month <= 6:#MAY 
-                if  day >= 21 or day <= 20:#JUNE 
+            elif month >= 5 and month <= 6:  # MAY
+                if  day >= 21 or day <= 20:  # JUNE
                     return "Gemini"
-            elif month >=6 and month <=7 :#JUNE 
-                if day >=21 or day <=22:#July 
+            elif month >=6 and month <=7 :  # JUNE
+                if day >=21 or day <=22:  # July
                     return "Cancer"
-            elif month >= 7 and month <= 8:#JULY 
-                if day >= 23 or day <= 22:#AUGUST 
+            elif month >= 7 and month <= 8:  # JULY
+                if day >= 23 or day <= 22:  # AUGUST
                     return "Leo"
-            elif month >=8 and month <=9:#AUGUST 
-                if day >= 23 or day <=22:#SEPTEMBER 
+            elif month >=8 and month <=9:  # AUGUST
+                if day >= 23 or day <=22:  # SEPTEMBER
                     return "Virgo"
-            elif month >=9 and month <= 10:#SEPTEMBER 
-                if day >= 23 or day <= 22:#OCTOBER 
+            elif month >=9 and month <= 10:  # SEPTEMBER
+                if day >= 23 or day <= 22:  # OCTOBER
                     return "Libra"
-            elif month >= 10 and month <= 11:#OCTOBER 
-                if day >=23 and day <= 21:#NOVEMBER 
+            elif month >= 10 and month <= 11:  # OCTOBER
+                if day >=23 and day <= 21:  # NOVEMBER
                     return "Scorpio"
-            elif month >= 11 and month <= 12:#NOVEMBER 
-                if day >= 22 or day <= 21:#DECEMBER 
+            elif month >= 11 and month <= 12:  # NOVEMBER
+                if day >= 22 or day <= 21:  # DECEMBER
                     return "Sagittarius"
-            elif month >= 12 and month <= 1:#DECEMBER 
-                if day >= 20 or day <= 18:#JANUARY 
+            elif month >= 12 and month <= 1:  # DECEMBER
+                if day >= 20 or day <= 18:  # JANUARY
                     return "Capricorn"
-            elif month >= 1 and month <= 2:#JANUARY 
-                if day >= 19 or day <= 18:#FEBUARY 
+            elif month >= 1 and month <= 2:  # JANUARY
+                if day >= 19 or day <= 18:  # FEBRUARY
                     return "Aquarius"
-            elif month >= 2 and month <= 3:#FEBUARY 
-                if day >= 19 or day <= 20:#MARCH 
+            elif month >= 2 and month <= 3:  # FEBRUARY
+                if day >= 19 or day <= 20:  # MARCH
                     return "Pisces"
         except Exception as e:
             print("ICON:SELECTION::ERROR:: ", str(e))
@@ -539,7 +573,7 @@ class Register(Popup):
         year = str(self.ids['Year_Date'].text)+"@"
         print("DATE:: ", day, ":", month, ":", year)
 
-        Icon = str(self.select_Icon(day, month))
+        Icon = str(self.select_icon(day, month))
         print("ICON MADE:: ", str(Icon))
 
         Country = str(self.ids['Country'].text)+"@"
@@ -564,10 +598,49 @@ class Register(Popup):
         if "WELCOME_NEW" in feddBack:
             Login().open()
 
+    # GRAPHIC THINGS
+
+    def back_on(self):
+        self.ids.back_image.source = 'ASSETS/Buttons/OffBack.png'
+
+    def back_off(self):
+        self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
+
+    def submit_on(self):
+        self.ids.submit_image.source = 'ASSETS/Buttons/OffSubmit.png'
+
+    def submit_off(self):
+        self.ids.submit_image.source = 'ASSETS/Buttons/OnSubmit.png'
+
+
 class Login(Popup):
     def __init__(self, **kw):
         super().__init__(**kw)
         self.FM = File_man()
+
+    def go(self):
+        name = str(self.ids['Name'].text)+"@"
+        day = str(self.ids['Birth_DAY'].text)
+        month = str(self.ids['Birth_MONTH'].text)
+        year = str(self.ids['Birth_YEAR'].text)
+        country = str(self.ids['Country'].text)
+
+        player_data = "LOGIN@"+name+country
+        self.FM.write_file("SOCKET_DATA/Player.txt", player_data, "w")
+        time.sleep(0.5)
+        feed_back = str(self.FM.read_file("SOCKET_DATA/LOGIN.txt"))
+        # print("FEEDBACK:: ", feed_back)
+        try:
+            if "LOGIN" in feed_back:
+                print("LOGIN:SUCCESSFUL")
+                Welcome().open()
+            if "REGISTER_PLEASE" in feed_back:
+                print("PLEASE_REGISTER")
+                Register().open()
+        except Exception as e:
+            print("LOGIN_ERROR:: ", str(e))
+
+    # GRAPHIC THINGS
 
     def submit_on(self):
         self.ids.submit_image.source = 'ASSETS/Buttons/OffSubmit.png'
@@ -582,29 +655,6 @@ class Login(Popup):
         self.ids.register_image.source = 'ASSETS/Buttons/OnRegister.png'
 
 
-    def go(self):
-        name = str(self.ids['Name'].text)+"@"
-        day = str(self.ids['Birth_DAY'].text)
-        month = str(self.ids['Birth_MONTH'].text)
-        year = str(self.ids['Birth_YEAR'].text)
-        Country = str(self.ids['Country'].text)
-
-
-        player_data = "LOGIN@"+name+Country
-        self.FM.write_file("SOCKET_DATA/Player.txt", player_data, "w")
-        time.sleep(0.5)
-        feddBack = str(self.FM.read_file("SOCKET_DATA/LOGIN.txt"))
-        #print("FEDBACK:: ", feddBack)
-        try:
-            if "LOGIN" in feddBack:
-                print("LOGIN:SUCCESSFUL")
-                Welcome().open()
-            if "REGISTER_PLEASE" in feddBack:
-                print("PLEASE_REGISTER")
-                Register().open()
-        except Exception as e:
-            print("LOGIN_ERROR:: ", str(e))
-
 class Welcome(Popup):
     def __init__(self, **kw):
         super().__init__(**kw)
@@ -614,14 +664,19 @@ class Welcome(Popup):
         name = self.NAME.split("@")
 
         if len(name) > 1:
-            #print("PLAYER_DATA:: ", str(name))        
-            user = str(name[1]).translate(str.maketrans('','',string.punctuation))
-            #print("NAME:: ", str(user))
+            # print("PLAYER_DATA:: ", str(name))
+            user = str(name[1]).translate(str.maketrans('', '', string.punctuation))
+            # print("NAME:: ", str(user))
 
             self.ids['WelcomeName'].text = str(user)
 
         else:
             Login().open()
+
+    def home(self):
+        MDApp.get_running_app().root.current = "Home"
+
+    # GRAPHIC THINGS
 
     def continue_on(self):
         self.ids.continue_image.source = 'ASSETS/Buttons/OffContinue.png'
@@ -629,8 +684,6 @@ class Welcome(Popup):
     def continue_off(self):
         self.ids.continue_image.source = 'ASSETS/Buttons/OnContinue.png'
 
-    def home(self):
-        MDApp.get_running_app().root.current ="Home"#
 
 class Loading(BoxLayout):
     def __init__(self, **kw):
@@ -640,7 +693,7 @@ class Loading(BoxLayout):
         try:
             self.conn = connections()
         except sock_error as se:
-            print("??CON_ERROR??(MAIN.py)",str(se))
+            print("??CON_ERROR??(MAIN.py)", str(se))
         
         try:
             self.recv = threading.Thread(target=self.conn.get_msg)
@@ -659,14 +712,11 @@ class Loading(BoxLayout):
             print("\n\n!!INIT_CONNECTION_ERROR!!\n\n", str(e))
             raise SystemExit(1)
 
-
         self.sec = 0
         Clock.schedule_interval(self.update_time, 1)
 
-
-
-    #AUTO_LOGIN
-    def Just_Check(self):
+    # AUTO_LOGIN
+    def just_check(self):
         try:
             self.NAME = str(self.FM.read_file("SOCKET_DATA/Profile.txt"))
             name = self.NAME.split("@")
@@ -675,18 +725,18 @@ class Loading(BoxLayout):
             if len(name) > 0:
                 print("ATTEMPTING_AUTO_LOGIN..")
                 print("PLAYER_DATA:: ", str(name))        
-                user = str(name[1]).translate(str.maketrans('','',string.punctuation))
-                Country = str(name[3]).translate(str.maketrans('','',string.punctuation))
-                player_data = "LOGIN@"+user+Country
+                user = str(name[1]).translate(str.maketrans('', '', string.punctuation))
+                country = str(name[3]).translate(str.maketrans('', '', string.punctuation))
+                player_data = "LOGIN@"+user+country
                 self.FM.write_file("SOCKET_DATA/Player.txt", player_data, "w")
                 time.sleep(0.5)
-                feddBack = str(self.FM.read_file("SOCKET_DATA/LOGIN.txt"))
+                feed_back = str(self.FM.read_file("SOCKET_DATA/LOGIN.txt"))
 
                 try:
-                    if "LOGIN" in feddBack:
+                    if "LOGIN" in feed_back:
                         print("LOGIN:SUCCESSFUL")
                         return True
-                    if "REGISTER_PLEASE" in feddBack:
+                    if "REGISTER_PLEASE" in feed_back:
                         print("PLEASE_REGISTER")
                         return False
                 except Exception as e:
@@ -695,44 +745,29 @@ class Loading(BoxLayout):
         except Exception as E:
             print("AUTO_LOGIN_ERROR: ", str(E))
 
-
-
-
     def update_time(self, sec):
+        print("LOADING... ", str(self.sec))
         self.sec = self.sec + 1
-        print("SKIPPING_LOADING_FOR_NOW")
+        if self.sec >= 9:  # 9 SEC FOR GIF TO FINISH
 
-        if self.sec >= 1: #8 SEC FOR GIF TO FINISH
+            # pl = self.FM.read_file("SOCKET_DATA/Profile.txt")
+            # if len(str(pl)) >= 4:
+            #                 Welcome().open()
+            # else:
+            #     Login().open()
 
-
-            #JUST UNCOMMENT THIS PART ON YOUR SIDE FOR NOW>>>
-#            pl = self.FM.read_file("SOCKET_DATA/Profile.txt")
-#            if len(str(pl)) >= 4:
-#                Welcome().open()
-#            else:
-#                Login().open()
-            #<<<
-
-
-
-            #AND_COMMENT_OUT:ON_YOUR_SIDE::: AUTO_LOGIN
-            #<<<
-
-            auto_log = self.Just_Check()
-            if auto_log == True:
+            auto_log = self.just_check()
+            if auto_log is True:
                 Welcome().open()
             else:
                 Login().open()
-            #>>>
-
-
 
             Clock.unschedule(self.update_time)
 
 
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-#MAIN_
-#*********************************************************
+# MAIN_
+# ********************************************************
 
 class MyMDApp(MDApp):
     def __init__(self, **kwargs):
@@ -757,7 +792,6 @@ class MyMDApp(MDApp):
         screen.add_widget(self.SC)
         self.screenM.add_widget(screen)
 
-
         self.Re = Recycle() #MATCH_SCREEN...
         screen = Screen(name="Recycle")
         screen.add_widget(self.Re)
@@ -773,9 +807,24 @@ class MyMDApp(MDApp):
         screen.add_widget(self.Lob)
         self.screenM.add_widget(screen)
 
-        self.AB = AdsBank()
-        screen = Screen(name="AdsBank")
+        self.AB = Store()
+        screen = Screen(name="Store")
         screen.add_widget(self.AB)
+        self.screenM.add_widget(screen)
+
+        self.S = Settings()
+        screen = Screen(name="Settings")
+        screen.add_widget(self.S)
+        self.screenM.add_widget(screen)
+
+        self.RG = RankG()
+        screen = Screen(name="RankG")
+        screen.add_widget(self.RG)
+        self.screenM.add_widget(screen)
+
+        self.RL = RankL()
+        screen = Screen(name="RankL")
+        screen.add_widget(self.RL)
         self.screenM.add_widget(screen)
 
         self.W = Welcome()
@@ -807,6 +856,7 @@ class MyMDApp(MDApp):
         self.screenM.current="Loading"
 
         return self.screenM
+
 
 if __name__=="__main__":
     M = MyMDApp()
