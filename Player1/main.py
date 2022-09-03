@@ -393,16 +393,16 @@ class Settings(Popup):
         self.ids.Music_image.source = 'ASSETS/Buttons/OnSound.png'
 
     def report_on(self):
-        self.ids.Report_image.source = 'ASSETS/Buttons/OffReport.png'
+        self.ids.report_image.source = 'ASSETS/Buttons/OffReport.png'
 
     def report_off(self):
-        self.ids.Report_image.source = 'ASSETS/Buttons/OnReport.png'
+        self.ids.report_image.source = 'ASSETS/Buttons/OnReport.png'
 
-    def logout_on(self):
-        self.ids.Logout_image.source = 'ASSETS/Buttons/OffLogout.png'
+    def reset_on(self):
+        self.ids.reset_image.source = 'ASSETS/Buttons/OffReset.png'
 
-    def logout_off(self):
-        self.ids.Logout_image.source = 'ASSETS/Buttons/OnLogout.png'
+    def reset_off(self):
+        self.ids.reset_image.source = 'ASSETS/Buttons/OnReset.png'
 
     def back_on(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OffBack.png'

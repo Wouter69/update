@@ -1,0 +1,168 @@
+Settings:
+
+<Settings>:
+
+    size_hint: None, None
+    size: dp(300), dp(550)
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    auto_dismiss: False
+    background: 'ASSETS/back/SettingsPopup.png'
+    title: ""
+    separator_height: dp(0)
+    seperator_color: None
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: dp(15)
+        pos_hint: {'center_X': .5}
+        size_hint: .9, 1
+        padding: dp(20), dp(20), dp(20), dp(20)
+
+        BoxLayout:
+            size_hint: .9,None
+            height:dp(100)
+            pos_hint: {'center_x': .5}
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: .5,None
+                height:dp(100)
+                padding: (dp(5), dp(5), dp(5), dp(5))
+                spacing: dp(5)
+                background_color: 190/255,147/255,97/255,.25
+                canvas:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+                BoxLayout:
+                    size_hint: 1,None
+                    height:dp(40)
+
+                    Label:
+                        text: 'Sound'
+                        color: 0,0,0,1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+                        size_hint: .1, None
+                        height: dp(40)
+
+                    Button:
+                        id: Sound_button
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+                        background_color: 0,0,0,0
+
+                        on_press: root.sound_on()
+                        on_release: root.sound_off()
+
+                        Image:
+                            id: Sound_image
+                            source: 'ASSETS/Buttons/OnSound.png'
+                            center_x: self.parent.center_x
+                            center_y: self.parent.center_y
+                            size: dp(40), dp(40)
+                BoxLayout:
+                    size_hint: 1,None
+                    height:dp(40)
+
+                    Label:
+                        text: 'Music'
+                        color: 0,0,0,1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+                        size_hint: .1, 1
+
+                    Button:
+                        id: Music_button
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+                        background_color: 0,0,0,0
+
+                        on_press: root.music_on()
+                        on_release: root.music_off()
+
+                        Image:
+                            id: Music_image
+                            source: 'ASSETS/Buttons/OnSound.png'
+                            center_x: self.parent.center_x
+                            center_y: self.parent.center_y
+                            size: dp(40), dp(40)
+
+        Label:
+            size_hint: 1,None
+            height:dp(5)
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 1,None
+            height: dp(100)
+
+            Label:
+                text: 'Do you have a problem?'
+                color: 0,0,0,1
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                font_size: sp(14)
+                size_hint: 1, None
+                height: dp(40)
+
+            Button:
+                id: report_button
+                size_hint: None, None
+                width: dp(160)
+                height: dp(40)
+                pos_hint:{'center_x': .5, }
+                background_color: 0,0,0,0
+
+                on_press: root.report_on()
+                on_release: root.report_off()
+
+                Image:
+                    id: report_image
+                    source:'ASSETS/Buttons/OnReport.png'
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    size: dp(160), dp(80)
+
+        Label:
+            size_hint: 1,None
+            height:dp(20)
+
+        Button:
+            id: reset_button
+            size_hint: None, None
+            width: dp(160)
+            height: dp(40)
+            pos_hint:{'center_x': .5, }
+            background_color: 0,0,0,0
+
+            on_press: root.reset_on()
+            on_release: root.reset_off()
+
+            Image:
+                id: reset_image
+                source:'ASSETS/Buttons/OnReset.png'
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                size: dp(160), dp(80)
+
+        Button:
+            id: back_button
+            size_hint: None, None
+            width: dp(40)
+            height: dp(40)
+            background_color: 0,0,0,0
+
+            on_press: root.back_on()
+            on_release: root.back_off()
+
+            Image:
+                id: back_image
+                source: 'ASSETS/Buttons/OnBack.png'
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                size: dp(40), dp(40)
