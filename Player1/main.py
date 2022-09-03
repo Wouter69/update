@@ -307,6 +307,45 @@ class Score(Screen):
 # ********************************************************
 
 
+class Reset(Popup):
+
+    def back_on(self):
+        self.ids.back_image.source = 'ASSETS/Buttons/OffBack.png'
+
+    def back_off(self):
+        self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
+
+    def reset_on(self):
+        self.ids.reset_image.source = 'ASSETS/Buttons/OffReset.png'
+
+    def reset_off(self):
+        self.ids.reset_image.source = 'ASSETS/Buttons/OnReset.png'
+
+
+class ReportC(Popup):
+
+    def back_on(self):
+        self.ids.back_image.source = 'ASSETS/Buttons/OffBack.png'
+
+    def back_off(self):
+        self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
+
+
+class Report(Popup):
+
+    def back_on(self):
+        self.ids.back_image.source = 'ASSETS/Buttons/OffBack.png'
+
+    def back_off(self):
+        self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
+
+    def submit_on(self):
+        self.ids.submit_image.source = 'ASSETS/Buttons/OffSubmit.png'
+
+    def submit_off(self):
+        self.ids.submit_image.source = 'ASSETS/Buttons/OnSubmit.png'
+
+
 class Home(BoxLayout):
     def __init__(self, **kw):
         super(Home, self).__init__(**kw)
@@ -410,6 +449,7 @@ class Settings(Popup):
     def back_off(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
         MDApp.get_running_app().root.current = "Home"
+
 
 class Store(Screen):
     def __init__(self, **kw):
