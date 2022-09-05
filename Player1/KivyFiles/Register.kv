@@ -1,4 +1,3 @@
-Register:
 
 <Register>:
     size_hint: None, None
@@ -135,7 +134,11 @@ Register:
             background_color: 0,0,0,0
 
             on_press: root.submit_on()
-            on_release: root.Register(), root.submit_off(), root.dismiss()
+            on_release:
+                root.submit_off()
+                root.Register()
+                root.dismiss()
+                root.Welcome().open()
 
             Image:
                 id: submit_image
@@ -162,7 +165,10 @@ Register:
                 background_color: 0,0,0,0
 
                 on_press: root.back_on()
-                on_release:  root.back_off(), root.dismiss(), root.Login().open()
+                on_release:
+                    root.back_off()
+                    root.dismiss()
+                    root.Login().open()
 
                 Image:
                     id: back_image

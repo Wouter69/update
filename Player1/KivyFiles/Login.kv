@@ -1,4 +1,3 @@
-Login:
 
 <Login>:
     size_hint: None, None
@@ -116,7 +115,11 @@ Login:
             background_color: 0,0,0,0
 
             on_press: root.submit_on()
-            on_release: root.go(), root.submit_off(), root.dismiss()
+            on_release:
+                root.go()
+                root.submit_off()
+                root.dismiss()
+                root.Welcome().open()
 
             Image:
                 id: submit_image
@@ -146,7 +149,10 @@ Login:
             background_color: 0,0,0,0
 
             on_press: root.register_on()
-            on_release: root.register_off(), root.dismiss(), root.Register().open()
+            on_release:
+                root.register_off()
+                root.dismiss()
+                root.Register().open()
 
             Image:
                 id: register_image

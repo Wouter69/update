@@ -1,4 +1,4 @@
-Report:
+
 
 <Report>:
 
@@ -112,7 +112,10 @@ Report:
             background_color: 0,0,0,0
 
             on_press: root.submit_on()
-            on_release: root.submit_off()
+            on_release:
+                root.submit_off()
+                root.dismiss()
+                ReportC().open()
 
             Image:
                 id: submit_image
@@ -135,7 +138,7 @@ Report:
                 background_color: 0,0,0,0
 
                 on_press: root.back_on()
-                on_release:  root.back_off()
+                on_release: root.back_off()
 
                 Image:
                     id: back_image
