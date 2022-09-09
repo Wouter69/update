@@ -39,9 +39,12 @@
             height: dp(80)
             pos_hint:{'center_x': .5, }
             background_color: 0,0,0,0
-            on_press: root.store_on()
+
+            on_press:
+                root.store_on()
             on_release:
                 root.store_off()
+                app.root.current = "Store"
 
             Image:
                 id: store_image
@@ -57,9 +60,12 @@
             height: dp(80)
             pos_hint:{'center_x': .5, }
             background_color: 0,0,0,0
-            on_press: root.playg_on()
+
+            on_press:
+                root.playg_on()
             on_release:
                 root.playg_off(),
+                app.root.current = 'Lobby'
 
             Image:
                 id: PlayG_image
@@ -75,9 +81,12 @@
             height: dp(80)
             pos_hint:{'center_x': .5, }
             background_color: 0,0,0,0
-            on_press: root.rank_on()
+
+            on_press:
+                root.rank_on()
             on_release:
                 root.rank_off()
+                app.root.current = "RankG"
 
             Image:
                 id: rank_image
@@ -92,10 +101,11 @@
             width: dp(40)
             height: dp(40)
             background_color: 0,0,0,0
-            on_press: root.settings_on()
+
+            on_press:
+                root.settings_on()
             on_release:
                 root.settings_off()
-
 
             Image:
                 id: settings_image

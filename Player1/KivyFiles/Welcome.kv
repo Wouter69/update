@@ -47,8 +47,11 @@
             pos_hint:{'center_x': .5, }
             background_color: 0,0,0,0
 
-            on_press: root.continue_on()
-            on_release: root.continue_off(), root.dismiss()
+            on_press:
+                root.continue_on()
+            on_release:
+                root.continue_off()
+                root.dismiss()
 
             Image:
                 id: continue_image

@@ -506,8 +506,11 @@
             pos_hint:{'right': 1, }
             background_color: 0,0,0,0
 
-            on_press: root.rankl_on()
-            on_release: root.rankl_off()
+            on_press:
+                root.rankl_on()
+            on_release:
+                root.rankl_off()
+                app.root.current = "RankL"
 
             Image:
                 id: RankL_image
@@ -523,8 +526,11 @@
             height: dp(40)
             background_color: 0,0,0,0
 
-            on_press: root.back_on()
-            on_release: root.back_off()
+            on_press:
+                root.back_on()
+            on_release:
+                root.back_off()
+                app.root.current = "Home"
 
             Image:
                 id: back_image

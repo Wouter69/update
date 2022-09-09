@@ -49,15 +49,17 @@
                         size_hint: .1, None
                         height: dp(40)
 
-                    Button:
+                    ToggleButton:
                         id: Sound_button
                         size_hint: None, None
                         width: dp(40)
                         height: dp(40)
                         background_color: 0,0,0,0
 
-                        on_press: root.sound_on()
-                        on_release: root.sound_off()
+                        on_press:
+                            root.sound_on()
+                        on_release:
+                            root.sound_off()
 
                         Image:
                             id: Sound_image
@@ -76,15 +78,17 @@
                         font_size: sp(14)
                         size_hint: .1, 1
 
-                    Button:
+                    ToggleButton:
                         id: Music_button
                         size_hint: None, None
                         width: dp(40)
                         height: dp(40)
                         background_color: 0,0,0,0
 
-                        on_press: root.music_on()
-                        on_release: root.music_off()
+                        on_press:
+                            root.music_on()
+                        on_release:
+                            root.music_off()
 
                         Image:
                             id: Music_image
@@ -118,11 +122,11 @@
                 pos_hint:{'center_x': .5, }
                 background_color: 0,0,0,0
 
-                on_press: root.report_on()
+                on_press:
+                    root.report_on()
                 on_release:
                     root.report_off()
                     root.dismiss()
-                    Report().open()
 
                 Image:
                     id: report_image
@@ -143,11 +147,11 @@
             pos_hint:{'center_x': .5, }
             background_color: 0,0,0,0
 
-            on_press: root.reset_on()
+            on_press:
+                root.reset_on()
             on_release:
                 root.reset_off()
                 root.dismiss()
-                Reset().open()
 
             Image:
                 id: reset_image
@@ -163,8 +167,12 @@
             height: dp(40)
             background_color: 0,0,0,0
 
-            on_press: root.back_on()
-            on_release: root.back_off()
+            on_press:
+                root.back_on()
+            on_release:
+                root.back_off()
+                root.dismiss()
+                app.root.current = 'Home'
 
             Image:
                 id: back_image

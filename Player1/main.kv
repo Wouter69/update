@@ -1,5 +1,4 @@
 
-
 WindowManager:
     LoadingScreen:
     HomeScreen:
@@ -8,8 +7,6 @@ WindowManager:
     RankLScreen:
     LobbyScreen:
 
-
-
 #GAME_
 <Score>:
     id: Score
@@ -17,8 +14,6 @@ WindowManager:
         id: back
         text:'GAME_OVER'
         on_press: root.home()
-
-
 
 <Recycle>:
     #MAIN T_M_B CARDS
@@ -224,20 +219,5 @@ WindowManager:
             size_hint: 1, .25
             pos_hint: {'x': 0.0,'y': 0.0}
 
-#MAIN_&_LOGIN/REGISTER
-<LobbyScreen>:
-    name: 'Lobby'
-    MDFloatLayout:
-        Button:
-            id: Lobby
-            text: 'READY?'
-            size_hint: 1, .5
-            pos_hint: {'x': 0.0,'y': 0.5}
-            on_press: root.Ready()
-        Button:
-            id: Back
-            text: "BACK"
-            size_hint: 1, .5
-            pos_hint: {'x': 0.0,'y': 0.0}
-            on_press: root.Back()
+
 

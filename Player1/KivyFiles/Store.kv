@@ -51,8 +51,11 @@
             pos_hint:{'center_x': .5, }
             background_color: 0,0,0,0
 
-            on_press: root.play_on()
-            on_release: root.play_off(), root.play()
+            on_press:
+                root.play_on()
+            on_release:
+                root.play_off()
+                root.play()
 
             Image:
                 id: play_image
@@ -76,8 +79,12 @@
             width: dp(40)
             height: dp(40)
             background_color: 0,0,0,0
-            on_press: root.back_on()
-            on_release: root.back_off()
+
+            on_press:
+                root.back_on()
+            on_release:
+                root.back_off()
+                app.root.current = "Home"
 
             Image:
                 id: back_image

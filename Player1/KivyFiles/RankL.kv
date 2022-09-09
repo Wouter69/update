@@ -505,8 +505,11 @@
             pos_hint:{'right': 1, }
             background_color: 0,0,0,0
 
-            on_press: root.rankg_on()
-            on_release: root.rankg_off()
+            on_press:
+                root.rankg_on()
+            on_release:
+                root.rankg_off()
+                app.root.current = "RankG"
 
             Image:
                 id: RankG_image
@@ -522,8 +525,11 @@
             height: dp(40)
             background_color: 0,0,0,0
 
-            on_press: root.back_on()
-            on_release: root.back_off()
+            on_press:
+                root.back_on()
+            on_release:
+                root.back_off()
+                app.root.current = "Home"
 
             Image:
                 id: back_image

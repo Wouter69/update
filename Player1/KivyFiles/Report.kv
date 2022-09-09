@@ -111,11 +111,11 @@
             pos_hint:{'center_x': .5,}
             background_color: 0,0,0,0
 
-            on_press: root.submit_on()
+            on_press:
+                root.submit_on()
             on_release:
                 root.submit_off()
                 root.dismiss()
-                ReportC().open()
 
             Image:
                 id: submit_image
@@ -137,8 +137,12 @@
                 height: dp(40)
                 background_color: 0,0,0,0
 
-                on_press: root.back_on()
-                on_release: root.back_off()
+                on_press:
+                    root.back_on()
+                on_release:
+                    root.back_off()
+                    root.dismiss()
+                    app.root.current = 'Home'
 
                 Image:
                     id: back_image

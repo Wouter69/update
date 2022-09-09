@@ -1,5 +1,5 @@
 
-<Lobby>:
+<LobbyScreen>:
     name: 'Lobby'
     BoxLayout:
         padding: dp(10)
@@ -65,8 +65,11 @@
             height: dp(40)
             background_color: 0,0,0,0
 
-            on_press: root.back_on()
-            on_release: root.back_off()
+            on_press:
+                root.back_on()
+            on_release:
+                root.back_off()
+                app.root.current = "Home"
 
             Image:
                 id: back_image

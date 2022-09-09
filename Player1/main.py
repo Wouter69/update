@@ -26,7 +26,7 @@ Builder.load_file('KivyFiles/Home.kv')
 Builder.load_file('KivyFiles/Store.kv')
 Builder.load_file('KivyFiles/RankG.kv')
 Builder.load_file('KivyFiles/RankL.kv')
-#Builder.load_file('KivyFiles/Lobby.kv')
+Builder.load_file('KivyFiles/Lobby.kv')
 
 # Loading Popup.kv Files
 Builder.load_file('KivyFiles/Welcome.kv')
@@ -257,7 +257,6 @@ class Reset(Popup):
 
     def back_off(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
-        MDApp.get_running_app().root.current = 'Home'
 
     def reset_on(self):
         self.ids.reset_image.source = 'ASSETS/Buttons/OffReset.png'
@@ -273,7 +272,6 @@ class ReportC(Popup):
 
     def back_off(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
-        MDApp.get_running_app().root.current = 'Home'
 
 
 class Report(Popup):
@@ -283,10 +281,10 @@ class Report(Popup):
 
     def back_off(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
-        MDApp.get_running_app().root.current = 'Home'
 
     def submit_on(self):
         self.ids.submit_image.source = 'ASSETS/Buttons/OffSubmit.png'
+        ReportC().open()
 
     def submit_off(self):
         self.ids.submit_image.source = 'ASSETS/Buttons/OnSubmit.png'
@@ -316,19 +314,20 @@ class Setting(Popup):
 
     def report_off(self):
         self.ids.report_image.source = 'ASSETS/Buttons/OnReport.png'
+        Report().open()
 
     def reset_on(self):
         self.ids.reset_image.source = 'ASSETS/Buttons/OffReset.png'
 
     def reset_off(self):
         self.ids.reset_image.source = 'ASSETS/Buttons/OnReset.png'
+        Reset().open()
 
     def back_on(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OffBack.png'
 
     def back_off(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
-        MyMDApp.get_running_app().root.current = "home"
 
 
 class Register(Popup):
@@ -343,6 +342,7 @@ class Register(Popup):
 
     def back_off(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
+        Login().open()
 
     def submit_on(self):
         self.ids.submit_image.source = 'ASSETS/Buttons/OffSubmit.png'
@@ -426,6 +426,10 @@ class Register(Popup):
         except Exception as e:
             print("ICON:SELECTION::ERROR:: ", str(e))
 
+# we need to change this def name, the class is called Register(),
+# and you are trying to call this def, in the Register.kv file.
+# mayby try (record, inscribe or enter)
+
     def Register(self):
         print("REGISTER_ED: NOT_YET_UPDATED")
         name = str(self.ids['Name'].text) + "@"
@@ -456,7 +460,7 @@ class Register(Popup):
         feddBack = str(self.FM.read_file("SOCKET_DATA/LOGIN.txt"))
         print("FEDBACK:: ", feddBack)
         if "LOGIN" in feddBack:
-            MDApp.get_running_app().root.current = "Home"
+            Welcome().open()
         if "WELCOME_NEW" in feddBack:
             Login().open()
 
@@ -477,7 +481,7 @@ class Login(Popup):
 
     def register_off(self):
         self.ids.register_image.source = 'ASSETS/Buttons/OnRegister.png'
-
+        Register().open()
 
     def go(self):
         name = str(self.ids['Name'].text)+"@"
@@ -538,9 +542,11 @@ class LobbyScreen(Screen):
         super().__init__(**kw)
         self.FM = File_man()
 
-    def Back(self):
-        print("BACK_TO_LOADING")
-        MDApp.get_running_app().root.current = 'Home'
+    def back_on(self):
+        self.ids.back_image.source = 'ASSETS/Buttons/OffBack.png'
+
+    def back_off(self):
+        self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
 
     def set_up(self):
         me = str(self.FM.read_file("SOCKET_DATA/Profile.txt"))
@@ -610,14 +616,12 @@ class RankLScreen(Screen):
 
     def back_off(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
-        MDApp.get_running_app().root.current = "Home"
 
     def rankg_on(self):
         self.ids.RankG_image.source = 'ASSETS/Buttons/OffRankG.png'
 
     def rankg_off(self):
         self.ids.RankG_image.source = 'ASSETS/Buttons/OnRankG.png'
-        MDApp.get_running_app().root.current = "RankG"
 
 
 class RankGScreen(Screen):
@@ -630,14 +634,12 @@ class RankGScreen(Screen):
 
     def back_off(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
-        MDApp.get_running_app().root.current = "Home"
 
     def rankl_on(self):
         self.ids.RankL_image.source = 'ASSETS/Buttons/OffRankL.png'
 
     def rankl_off(self):
         self.ids.RankL_image.source = 'ASSETS/Buttons/OnRankL.png'
-        MDApp.get_running_app().root.current = "RankL"
 
 
 class StoreScreen(Screen):
@@ -649,14 +651,13 @@ class StoreScreen(Screen):
         print("PLAYING_ADD")
 
     # ---------------------------------------------------------------------------------------------
-    #######THIS IS WHERE YOU PLAY THE VIDEO
+    # THIS IS WHERE YOU PLAY THE VIDEO
 
     def back_on(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OffBack.png'
 
     def back_off(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
-        MDApp.get_running_app().root.current = "Home"
 
     def play_on(self):
         self.ids.play_image.source = 'ASSETS/Buttons/OffPlay.png'
@@ -707,26 +708,25 @@ class HomeScreen(Screen):
 
     def store_off(self):
         self.ids.store_image.source = 'ASSETS/Buttons/OnStore.png'
-        MDApp.get_running_app().root.current = "Store"
 
-    def PlayG_on(self):
+    def playg_on(self):
         self.ids.PlayG_image.source = 'ASSETS/Buttons/OffPlayG.png'
 
-    def PlayG_off(self):
+    def playg_off(self):
         self.ids.PlayG_image.source = 'ASSETS/Buttons/OnPlayG.png'
-        MDApp.get_running_app().root.current = 'Lobby'
+
     def rank_on(self):
         self.ids.rank_image.source = 'ASSETS/Buttons/OffRank.png'
 
     def rank_off(self):
         self.ids.rank_image.source = 'ASSETS/Buttons/OnRank.png'
-        MDApp.get_running_app().root.current = "RankG"
 
     def settings_on(self):
         self.ids.settings_image.source = 'ASSETS/Buttons/OffSettings.png'
 
     def settings_off(self):
         self.ids.settings_image.source = 'ASSETS/Buttons/OnSettings.png'
+        Setting().open()
 
 
 class LoadingScreen(Screen):
@@ -807,8 +807,8 @@ class LoadingScreen(Screen):
 
             auto_log = self.Just_Check()
             if auto_log == True:
-                Welcome().open()
                 MDApp.get_running_app().root.current = 'Home'
+                Welcome().open()
             else:
                 Login().open()
             # >>>
