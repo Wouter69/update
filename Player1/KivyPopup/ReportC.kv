@@ -1,0 +1,113 @@
+
+<ReportC>:
+
+    size_hint: None, None
+    size: dp(300), dp(300)
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    auto_dismiss: False
+    background: 'ASSETS/back/ReportCPopup.png'
+    title: ""
+    separator_height: dp(0)
+    seperator_color: None
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: dp(10)
+        pos_hint: {'center_X': .5}
+        size_hint: .9, 1
+        padding: dp(20), dp(20), dp(20), dp(20)
+
+        # -------------------------------------------------------
+        # Report Conformation - Parts
+        # -------------------------------------------------------
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, None
+            height: dp(60)
+            pos_hint: {'center_X': .5}
+
+            Label:
+                text: 'We have received'
+                color: 0, 0, 0, 1
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                font_size: sp(18)
+                size_hint: 1, None
+                height: dp(30)
+                pos_hint: {'center_X': .5}
+
+            Label:
+                text: 'your feedback'
+                color: 0, 0, 0, 1
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                font_size: sp(18)
+                size_hint: 1, None
+                height: dp(30)
+                pos_hint: {'center_X': .5}
+
+        # -------------------------------------------------------
+        # Report Conformation - Parts
+        # -------------------------------------------------------
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, None
+            height: dp(40)
+            pos_hint: {'center_X': .5}
+
+            Label:
+                text: 'We will look into the issue'
+                color: 0, 0, 0, 1
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                font_size: sp(12)
+                size_hint: 1, None
+                height: dp(20)
+                pos_hint: {'center_X': .5}
+
+            Label:
+                text: 'and revert as soon as possible'
+                color: 0, 0, 0, 1
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                font_size: sp(12)
+                size_hint: 1, None
+                height: dp(20)
+                pos_hint: {'center_X': .5}
+
+        # -------------------------------------------------------
+        # Spacing
+        # -------------------------------------------------------
+
+        Label:
+            size_hint: 1, None
+            height: dp(10)
+
+        # -------------------------------------------------------
+        # Back Button
+        # -------------------------------------------------------
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, None
+            height: dp(40)
+            spacing: dp(10)
+
+            Button:
+                id: back_button
+                size_hint: None, None
+                width: dp(40)
+                height: dp(40)
+                background_color: 0,0,0,0
+
+                on_press:
+                    root.back_on()
+
+                on_release:
+                    root.back_off()
+                    root.dismiss()
+
+                Image:
+                    id: back_image
+                    source: 'ASSETS/Buttons/OnBack.png'
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    size: dp(40), dp(40)

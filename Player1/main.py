@@ -6,6 +6,7 @@ import string
 import threading
 from socket import error as sock_error
 
+from kivy.core.audio import SoundLoader
 # KIVY IMPORTS
 from kivy.uix.popup import Popup
 from kivy.clock import Clock
@@ -21,21 +22,21 @@ from file_handle_C import File_man
 from conns import connections
 
 # Loading Screen.kv Files
-Builder.load_file('KivyFiles/Loading.kv')
-Builder.load_file('KivyFiles/Home.kv')
-Builder.load_file('KivyFiles/Store.kv')
-Builder.load_file('KivyFiles/RankG.kv')
-Builder.load_file('KivyFiles/RankL.kv')
-Builder.load_file('KivyFiles/Lobby.kv')
+Builder.load_file('KivyScreen/Loading.kv')
+Builder.load_file('KivyScreen/Home.kv')
+Builder.load_file('KivyScreen/Store.kv')
+Builder.load_file('KivyScreen/RankG.kv')
+Builder.load_file('KivyScreen/RankL.kv')
+Builder.load_file('KivyScreen/Lobby.kv')
 
 # Loading Popup.kv Files
-Builder.load_file('KivyFiles/Welcome.kv')
-Builder.load_file('KivyFiles/Login.kv')
-Builder.load_file('KivyFiles/Register.kv')
-Builder.load_file('KivyFiles/Setting.kv')
-Builder.load_file('KivyFiles/Reset.kv')
-Builder.load_file('KivyFiles/Report.kv')
-Builder.load_file('KivyFiles/ReportC.kv')
+Builder.load_file('KivyPopup/Welcome.kv')
+Builder.load_file('KivyPopup/Login.kv')
+Builder.load_file('KivyPopup/Register.kv')
+Builder.load_file('KivyPopup/Setting.kv')
+Builder.load_file('KivyPopup/Logout.kv')
+Builder.load_file('KivyPopup/Report.kv')
+Builder.load_file('KivyPopup/ReportC.kv')
 
 Window.size = (300, 560)
 
@@ -250,19 +251,19 @@ class Score(Screen):
 # ********************************************************
 
 
-class Reset(Popup):
+class Logout(Popup):
+
+    def logout_on(self):
+        self.ids.logout_image.source = 'ASSETS/Buttons/OffLogout.png'
+
+    def logout_off(self):
+        self.ids.logout_image.source = 'ASSETS/Buttons/OnLogout.png'
 
     def back_on(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OffBack.png'
 
     def back_off(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
-
-    def reset_on(self):
-        self.ids.reset_image.source = 'ASSETS/Buttons/OffReset.png'
-
-    def reset_off(self):
-        self.ids.reset_image.source = 'ASSETS/Buttons/OnReset.png'
 
 
 class ReportC(Popup):
@@ -284,7 +285,6 @@ class Report(Popup):
 
     def submit_on(self):
         self.ids.submit_image.source = 'ASSETS/Buttons/OffSubmit.png'
-        ReportC().open()
 
     def submit_off(self):
         self.ids.submit_image.source = 'ASSETS/Buttons/OnSubmit.png'
@@ -314,14 +314,12 @@ class Setting(Popup):
 
     def report_off(self):
         self.ids.report_image.source = 'ASSETS/Buttons/OnReport.png'
-        Report().open()
 
-    def reset_on(self):
-        self.ids.reset_image.source = 'ASSETS/Buttons/OffReset.png'
+    def logout_on(self):
+        self.ids.logout_image.source = 'ASSETS/Buttons/OffLogout.png'
 
-    def reset_off(self):
-        self.ids.reset_image.source = 'ASSETS/Buttons/OnReset.png'
-        Reset().open()
+    def logout_off(self):
+        self.ids.logout_image.source = 'ASSETS/Buttons/OnLogout.png'
 
     def back_on(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OffBack.png'
@@ -342,7 +340,6 @@ class Register(Popup):
 
     def back_off(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
-        Login().open()
 
     def submit_on(self):
         self.ids.submit_image.source = 'ASSETS/Buttons/OffSubmit.png'
@@ -481,7 +478,6 @@ class Login(Popup):
 
     def register_off(self):
         self.ids.register_image.source = 'ASSETS/Buttons/OnRegister.png'
-        Register().open()
 
     def go(self):
         name = str(self.ids['Name'].text)+"@"
@@ -508,6 +504,7 @@ class Login(Popup):
 
 
 class Welcome(Popup):
+
     def __init__(self, **kw):
         super().__init__(**kw)
         self.FM = File_man()
@@ -547,6 +544,7 @@ class LobbyScreen(Screen):
 
     def back_off(self):
         self.ids.back_image.source = 'ASSETS/Buttons/OnBack.png'
+
 
     def set_up(self):
         me = str(self.FM.read_file("SOCKET_DATA/Profile.txt"))
@@ -702,6 +700,9 @@ class HomeScreen(Screen):
         MDApp.get_running_app().root.current = 'Lobby'
 
 
+
+
+
     #GRAPHIC THINGS
     def store_on(self):
         self.ids.store_image.source = 'ASSETS/Buttons/OffStore.png'
@@ -726,7 +727,6 @@ class HomeScreen(Screen):
 
     def settings_off(self):
         self.ids.settings_image.source = 'ASSETS/Buttons/OnSettings.png'
-        Setting().open()
 
 
 class LoadingScreen(Screen):
@@ -806,8 +806,9 @@ class LoadingScreen(Screen):
             # <<<
 
             auto_log = self.Just_Check()
+
             if auto_log == True:
-                MDApp.get_running_app().root.current = 'Home'
+                MDApp.get_running_app().root.current = 'home'
                 Welcome().open()
             else:
                 Login().open()
@@ -836,8 +837,14 @@ class MyMDApp(MDApp):
         self.FM.write_file("SOCKET_DATA/game_over.txt", "", "w")
         self.FM.write_file("SOCKET_DATA/Player.txt", "", "w")
 
+        self.sound_home = SoundLoader.load('Sound/HomeMusic.wav')
+        self.sound_home.volume = .1
+
     def build(self):
         kv = Builder.load_file("main.kv")
+        if self.sound_home:
+           self.sound_home.play()
+
         return kv
 
 

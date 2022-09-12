@@ -1,0 +1,42 @@
+
+<LoadingScreen>:
+
+    name: 'loading'
+    BoxLayout:
+        orientation: "vertical"
+        canvas.before:
+            Rectangle:
+                id: png
+                source: "ASSETS/back/Background.png"
+                size: self.size
+                pos: self.pos
+
+        # -------------------------------------------------------
+        # Logo
+        # -------------------------------------------------------
+
+        Image:
+            id: png
+            source: "ASSETS/LogoW.png"
+            size_hint: 1, .3
+
+        # -------------------------------------------------------
+        # Loading Gif
+        # -------------------------------------------------------
+
+        Image:
+            id: zip
+            source: "ASSETS/Loading.zip"
+            anim_delay: .1
+            anim_loop: 1
+            size_hint: 1, .6
+
+        # -------------------------------------------------------
+        # Company Name
+        # -------------------------------------------------------
+
+        Label:
+            text: "Powered by The Plotting Raven"
+            font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+            font_size: sp(11)
+            size_hint: 1, .1

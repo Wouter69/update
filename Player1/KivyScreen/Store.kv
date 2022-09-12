@@ -1,0 +1,116 @@
+
+<StoreScreen>:
+
+    name: 'store'
+    BoxLayout:
+        padding: dp(10)
+        orientation: "vertical"
+        canvas.before:
+            Rectangle:
+                source: 'ASSETS/back/GameB.jpg'
+                size: self.size
+                pos: self.pos
+
+        # -------------------------------------------------------
+        # Watch 5 Gif
+        # -------------------------------------------------------
+
+        Image:
+            id: zip
+            source: "ASSETS/ad5.zip"
+            anim_delay: .1
+            size_hint: 1, 1
+
+        # -------------------------------------------------------
+        # PWatch 5 Tick Box
+        # -------------------------------------------------------
+
+        BoxLayout:
+            spacing: dp(5)
+            padding: dp(5)
+            size_hint: 1, .25
+
+
+            Label:
+                text: '1'
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+
+            Label:
+                text: '2'
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+
+            Label:
+                text: '3'
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+
+            Label:
+                text: '4'
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+
+            Label:
+                text: '5'
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+
+        # -------------------------------------------------------
+        # Play Video Button
+        # -------------------------------------------------------
+
+        Button:
+            id: play_button
+            size_hint: None, None
+            width: dp(150)
+            height: dp(150)
+            pos_hint:{'center_x': .5, }
+            background_color: 0,0,0,0
+
+            on_press:
+                root.play_on()
+
+            on_release:
+                root.play_off()
+
+            Image:
+                id: play_image
+                source:'ASSETS/Buttons/OnPlay.png'
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                size: dp(150), dp(150)
+
+        # -------------------------------------------------------
+        # Play Video - Parts
+        # -------------------------------------------------------
+
+        Label:
+            text: "Watch ads for a Pocket Cards"
+            text_size: self.width,None
+            text_align: 'center'
+            font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+            font_size: sp(14)
+            color: 1,1,1,1
+            size_hint: 1, .15
+
+        # -------------------------------------------------------
+        # Back Button
+        # -------------------------------------------------------
+
+        Button:
+            id: back_button
+            size_hint: None, None
+            width: dp(40)
+            height: dp(40)
+            background_color: 0,0,0,0
+
+            on_press:
+                root.back_on()
+
+            on_release:
+                root.back_off()
+                root.manager.transition = NoTransition()
+                app.root.current = 'home'
+
+            Image:
+                id: back_image
+                source: 'ASSETS/Buttons/OnBack.png'
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                size: dp(40), dp(40)

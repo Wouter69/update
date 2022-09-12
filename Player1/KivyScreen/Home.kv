@@ -1,0 +1,143 @@
+
+<HomeScreen>:
+    name: 'home'
+    BoxLayout:
+        orientation: "vertical"
+        spacing: dp(10)
+        padding:dp(10)
+        canvas.before:
+            Rectangle:
+                id: png
+                source: "ASSETS/back/Background.png"
+                size: self.size
+                pos: self.pos
+
+        # -------------------------------------------------------
+        # Player Icon and Name
+        # -------------------------------------------------------
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 1, .5
+
+            Image:
+                id: Icon_
+                source: "ASSETS/PlayerIcon/SagittariusM.png"
+                size_hint: 1, 4
+
+            Label:
+                id: Player
+                text: '...'
+                color: 1,1,1,1
+                bold: True
+                outline_color: 0,0,0,1
+                outline_width: dp(3)
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                font_size: sp(25)
+                size_hint: 1, 1
+
+        # -------------------------------------------------------
+        # Store Button
+        # -------------------------------------------------------
+
+        Button:
+            id: store_button
+            size_hint: None, None
+            width: dp(160)
+            height: dp(80)
+            pos_hint:{'center_x': .5, }
+            background_color: 0,0,0,0
+
+            on_press:
+                root.store_on()
+
+            on_release:
+                root.store_off()
+                root.manager.transition = NoTransition()
+                app.root.current = 'store'
+
+            Image:
+                id: store_image
+                source:'ASSETS/Buttons/OnStore.png'
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                size: dp(160), dp(80)
+
+        # -------------------------------------------------------
+        # Play Game Button
+        # -------------------------------------------------------
+
+        Button:
+            id: PlayG_button
+            size_hint: None, None
+            width: dp(160)
+            height: dp(80)
+            pos_hint:{'center_x': .5, }
+            background_color: 0,0,0,0
+
+            on_press:
+                root.playg_on()
+
+            on_release:
+                root.playg_off()
+                root.manager.transition = NoTransition()
+                app.root.current = 'lobby'
+
+            Image:
+                id: PlayG_image
+                source:'ASSETS/Buttons/OnPlayG.png'
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                size: dp(160), dp(80)
+
+        # -------------------------------------------------------
+        # Ranking Button
+        # -------------------------------------------------------
+
+        Button:
+            id: rank_button
+            size_hint: None, None
+            width: dp(160)
+            height: dp(80)
+            pos_hint:{'center_x': .5, }
+            background_color: 0,0,0,0
+
+            on_press:
+                root.rank_on()
+
+            on_release:
+                root.rank_off()
+                root.manager.transition = NoTransition()
+                app.root.current = 'rankg'
+
+            Image:
+                id: rank_image
+                source:'ASSETS/Buttons/OnRank.png'
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                size: dp(160), dp(80)
+
+        # -------------------------------------------------------
+        # Setting Button
+        # -------------------------------------------------------
+
+        Button:
+            id: settings_button
+            size_hint: None, None
+            width: dp(40)
+            height: dp(40)
+            background_color: 0,0,0,0
+
+            on_press:
+                root.settings_on()
+
+            on_release:
+                root.settings_off()
+                Factory.Setting().open()
+
+            Image:
+                id: settings_image
+                source: 'ASSETS/Buttons/OnSettings.png'
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                size: dp(40), dp(40)

@@ -1,0 +1,139 @@
+
+<Logout>:
+
+    size_hint: None, None
+    size: dp(300), dp(550)
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    auto_dismiss: False
+    background: 'ASSETS/back/ResetPopup.png'
+    title: ""
+    separator_height: dp(0)
+    seperator_color: None
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: dp(10)
+        pos_hint: {'center_X': .5}
+        size_hint: .9, 1
+        padding: dp(20), dp(20), dp(20), dp(20)
+
+        # -------------------------------------------------------
+        # Logout - Parts
+        # -------------------------------------------------------
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, None
+            height: dp(60)
+            pos_hint: {'center_X': .5}
+
+            Label:
+                text: 'Thank you for'
+                color: 0, 0, 0, 1
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                font_size: sp(18)
+                size_hint: 1, None
+                height: dp(30)
+                pos_hint: {'center_X': .5}
+
+            Label:
+                text: 'playing'
+                color: 0, 0, 0, 1
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                font_size: sp(18)
+                size_hint: 1, None
+                height: dp(30)
+                pos_hint: {'center_X': .5}
+
+            Label:
+                text: 'Nine of Staves'
+                color: 0, 0, 0, 1
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                font_size: sp(18)
+                size_hint: 1, None
+                height: dp(30)
+                pos_hint: {'center_X': .5}
+
+            Label:
+                text: ''
+                color: 0, 0, 0, 1
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                font_size: sp(18)
+                size_hint: 1, None
+                height: dp(30)
+                pos_hint: {'center_X': .5}
+
+        # -------------------------------------------------------
+        # Spacing
+        # -------------------------------------------------------
+
+        Label:
+            size_hint: 1, None
+            height: dp(50)
+
+        # -------------------------------------------------------
+        # Logout - Logout Button
+        # -------------------------------------------------------
+
+        Button:
+            id: logout_button
+            size_hint: None, None
+            width: dp(160)
+            height: dp(40)
+            pos_hint:{'center_x': .5, }
+            background_color: 0,0,0,0
+
+            on_press:
+                root.logout_on()
+
+            on_release:
+                root.logout_off()
+                root.dismiss()
+                app.root.current = 'loading'
+                Factory.Login().open()
+
+            Image:
+                id: logout_image
+                source:'ASSETS/Buttons/OnLogout.png'
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                size: dp(160), dp(80)
+
+        # -------------------------------------------------------
+        # Spacing
+        # -------------------------------------------------------
+
+        Label:
+            size_hint: 1, None
+            height: dp(80)
+
+        # -------------------------------------------------------
+        # Back Button
+        # -------------------------------------------------------
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, None
+            height: dp(40)
+            spacing: dp(10)
+
+            Button:
+                id: back_button
+                size_hint: None, None
+                width: dp(40)
+                height: dp(40)
+                background_color: 0,0,0,0
+
+                on_press:
+                    root.back_on()
+
+                on_release:
+                    root.back_off()
+                    root.dismiss()
+
+                Image:
+                    id: back_image
+                    source: 'ASSETS/Buttons/OnBack.png'
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                    size: dp(40), dp(40)

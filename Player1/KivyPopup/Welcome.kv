@@ -1,0 +1,87 @@
+
+<welcome>:
+
+    size_hint: None, None
+    size: dp(300), dp(300)
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    auto_dismiss: False
+    background: 'ASSETS/back/WelcomePopup.png'
+    title: ""
+    separator_height: dp(0)
+    seperator_color: None
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: dp(5)
+
+        # -------------------------------------------------------
+        # Welcome - Player Name
+        # -------------------------------------------------------
+
+        Label:
+            id: WelcomeName
+            text: 'Name of Player'
+            color: 0,0,0,1
+            font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+            font_size: sp(16)
+            size_hint: 1, None
+            height: dp(30)
+
+        # -------------------------------------------------------
+        # Welcome - Parts
+        # -------------------------------------------------------
+
+        Label:
+            text: 'You currently rank at:'
+            color: 0,0,0,1
+            font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+            font_size: sp(16)
+            size_hint: 1, None
+            height: dp(30)
+
+        # -------------------------------------------------------
+        # Welcome - Player Ranking Position
+        # -------------------------------------------------------
+
+        Label:
+            id: Rank
+            text: 'Rank'
+            color: 0,0,0,1
+            font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+            font_size: 25
+            size_hint: 1, None
+            height: dp(50)
+
+        # -------------------------------------------------------
+        # Welcome - Continue Button
+        # -------------------------------------------------------
+
+        Button:
+            id: continue_button
+            size_hint: None, None
+            width: dp(160)
+            height: dp(40)
+            pos_hint:{'center_x': .5, }
+            background_color: 0,0,0,0
+
+            on_press:
+                root.continue_on()
+
+            on_release:
+                root.continue_off()
+                root.dismiss()
+
+            Image:
+                id: continue_image
+                source:'ASSETS/Buttons/OnContinue.png'
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                size: dp(160), dp(80)
+
+        # -------------------------------------------------------
+        # Spacing
+        # -------------------------------------------------------
+
+        Label:
+            size_hint: 1, None
+            height: dp(50)

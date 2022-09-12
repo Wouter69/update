@@ -1,0 +1,644 @@
+
+<RankGScreen>:
+
+    name: 'rankg'
+    BoxLayout:
+        padding: dp(10)
+        spacing: dp(10)
+        orientation: "vertical"
+        canvas.before:
+            Rectangle:
+                source: 'ASSETS/back/GameB.jpg'
+                size: self.size
+                pos: self.pos
+
+        # -------------------------------------------------------
+        # Global - Parts
+        # -------------------------------------------------------
+
+        Label:
+            text: 'Global Ranking'
+            font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+            font_size: sp(20)
+            size_hint: 1, .2
+
+        ScrollView:
+            StackLayout:
+                size_hint: 1, None
+                height: self.minimum_height
+                spacing: dp(2), dp(2)
+                padding: (dp(2.5),dp(2.5),dp(2.5),dp(2.5))
+
+                # -------------------------------------------------------
+                # Global - Position 1
+                # -------------------------------------------------------
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint: 1, None
+                    height: dp(40)
+                    spacing: dp(10)
+                    background_color: 190/255,147/255,97/255,.5
+                    canvas:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    Label:
+                        text: '1'
+                        color: 0,0,0,1
+                        size_hint: None, None
+                        width: dp(30)
+                        height: dp(40)
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Image:
+                        id: Icon1
+                        source: "ASSETS/PlayerIcon/AquariusF.png"
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    Label:
+                        id: name1
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .40, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Label:
+                        id: points1
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .30, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(12)
+
+                # -------------------------------------------------------
+                # Global - Position 2
+                # -------------------------------------------------------
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint: 1, None
+                    height: dp(40)
+                    spacing: dp(10)
+                    background_color: 190/255,147/255,97/255,.5
+                    canvas:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    Label:
+                        text: '2'
+                        color: 0,0,0,1
+                        size_hint: None, None
+                        width: dp(30)
+                        height: dp(40)
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Image:
+                        id: Icon2
+                        source: "ASSETS/PlayerIcon/AquariusF.png"
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    Label:
+                        id: name2
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .40, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Label:
+                        id: points2
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .30, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(12)
+
+                # -------------------------------------------------------
+                # Global - Position 3
+                # -------------------------------------------------------
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint: 1, None
+                    height: dp(40)
+                    spacing: dp(10)
+                    background_color: 190/255,147/255,97/255,.5
+                    canvas:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    Label:
+                        text: '3'
+                        color: 0,0,0,1
+                        size_hint: None, None
+                        width: dp(30)
+                        height: dp(40)
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Image:
+                        id: Icon3
+                        source: "ASSETS/PlayerIcon/AquariusF.png"
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    Label:
+                        id: name3
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .40, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Label:
+                        id: points3
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .30, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(12)
+
+                # -------------------------------------------------------
+                # Global - Position 4
+                # -------------------------------------------------------
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint: 1, None
+                    height: dp(40)
+                    spacing: dp(10)
+                    background_color: 190/255,147/255,97/255,.5
+                    canvas:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    Label:
+                        text: '4'
+                        color: 0,0,0,1
+                        size_hint: None, None
+                        width: dp(30)
+                        height: dp(40)
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Image:
+                        id: Icon4
+                        source: "ASSETS/PlayerIcon/AquariusF.png"
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    Label:
+                        id: name4
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .40, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Label:
+                        id: points4
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .30, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(12)
+
+                # -------------------------------------------------------
+                # Global - Position 5
+                # -------------------------------------------------------
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint: 1, None
+                    height: dp(40)
+                    spacing: dp(10)
+                    background_color: 190/255,147/255,97/255,.5
+                    canvas:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    Label:
+                        text: '5'
+                        color: 0,0,0,1
+                        size_hint: None, None
+                        width: dp(30)
+                        height: dp(40)
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Image:
+                        id: Icon5
+                        source: "ASSETS/PlayerIcon/AquariusF.png"
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    Label:
+                        id: name5
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .40, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Label:
+                        id: points5
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .30, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(12)
+
+                # -------------------------------------------------------
+                # Global - Position 6
+                # -------------------------------------------------------
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint: 1, None
+                    height: dp(40)
+                    spacing: dp(10)
+                    background_color: 190/255,147/255,97/255,.5
+                    canvas:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    Label:
+                        text: '6'
+                        color: 0,0,0,1
+                        size_hint: None, None
+                        width: dp(30)
+                        height: dp(40)
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Image:
+                        id: Icon6
+                        source: "ASSETS/PlayerIcon/AquariusF.png"
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    Label:
+                        id: name6
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .40, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Label:
+                        id: points6
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .30, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(12)
+
+                # -------------------------------------------------------
+                # Global - Position 7
+                # -------------------------------------------------------
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint: 1, None
+                    height: dp(40)
+                    spacing: dp(10)
+                    background_color: 190/255,147/255,97/255,.5
+                    canvas:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    Label:
+                        text: '7'
+                        color: 0,0,0,1
+                        size_hint: None, None
+                        width: dp(30)
+                        height: dp(40)
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Image:
+                        id: Icon7
+                        source: "ASSETS/PlayerIcon/AquariusF.png"
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    Label:
+                        id: name7
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .40, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Label:
+                        id: points7
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .30, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(12)
+
+                # -------------------------------------------------------
+                # Global - Position 8
+                # -------------------------------------------------------
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint: 1, None
+                    height: dp(40)
+                    spacing: dp(10)
+                    background_color: 190/255,147/255,97/255,.5
+                    canvas:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    Label:
+                        text: '8'
+                        color: 0,0,0,1
+                        size_hint: None, None
+                        width: dp(30)
+                        height: dp(40)
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Image:
+                        id: Icon8
+                        source: "ASSETS/PlayerIcon/AquariusF.png"
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    Label:
+                        id: name8
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .40, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Label:
+                        id: points8
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .30, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(12)
+
+                # -------------------------------------------------------
+                # Global - Position 9
+                # -------------------------------------------------------
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint: 1, None
+                    height: dp(40)
+                    spacing: dp(10)
+                    background_color: 190/255,147/255,97/255,.5
+                    canvas:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    Label:
+                        text: '9'
+                        color: 0,0,0,1
+                        size_hint: None, None
+                        width: dp(30)
+                        height: dp(40)
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Image:
+                        id: Icon9
+                        source: "ASSETS/PlayerIcon/AquariusF.png"
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    Label:
+                        id: name9
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .40, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Label:
+                        id: points9
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .30, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(12)
+
+                # -------------------------------------------------------
+                # Global - Position 10
+                # -------------------------------------------------------
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint: 1, None
+                    height: dp(40)
+                    spacing: dp(10)
+                    background_color: 190/255,147/255,97/255,.5
+                    canvas:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+
+                    Label:
+                        text: '10'
+                        color: 0,0,0,1
+                        size_hint: None, None
+                        width: dp(30)
+                        height: dp(40)
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Image:
+                        id: Icon10
+                        source: "ASSETS/PlayerIcon/AquariusF.png"
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    Label:
+                        id: name10
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .40, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(14)
+
+                    Label:
+                        id: points10
+                        text: '...'
+                        text_size: self.width,None
+                        color: 0,0,0,1
+                        size_hint: .30, 1
+                        font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                        font_size: sp(12)
+
+        # -------------------------------------------------------
+        # Player Position
+        # -------------------------------------------------------
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, None
+            height: dp(40)
+            spacing: dp(10)
+            background_color: 190/255,147/255,97/255,.75
+            canvas:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            Label:
+                text: '152'
+                color: 0,0,0,1
+                size_hint: None, None
+                width: dp(30)
+                height: dp(40)
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                font_size: sp(14)
+
+            Image:
+                id: IconP
+                source: "ASSETS/PlayerIcon/AquariusF.png"
+                size_hint: None, None
+                width: dp(40)
+                height: dp(40)
+
+            Label:
+                id: nameP
+                text: 'Pampoen Pit'
+                text_size: self.width,None
+                color: 0,0,0,1
+                size_hint: .40, 1
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                font_size: sp(14)
+
+            Label:
+                id: pointsP
+                text: '1000'
+                text_size: self.width,None
+                color: 0,0,0,1
+                size_hint: .30, 1
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                font_size: sp(12)
+
+        # -------------------------------------------------------
+        # Local Button
+        # -------------------------------------------------------
+
+        Button:
+            id: RankL_button
+            size_hint: None, None
+            width: dp(160)
+            height: dp(40)
+            pos_hint:{'right': 1, }
+            background_color: 0,0,0,0
+
+            on_press:
+                root.rankl_on()
+
+            on_release:
+                root.rankl_off()
+                root.manager.transition = NoTransition()
+                app.root.current = 'rankl'
+
+            Image:
+                id: RankL_image
+                source:'ASSETS/Buttons/OnRankL.png'
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                size: dp(160), dp(80)
+
+        # -------------------------------------------------------
+        # Back Button
+        # -------------------------------------------------------
+
+        Button:
+            id: back_button
+            size_hint: None, None
+            width: dp(40)
+            height: dp(40)
+            background_color: 0,0,0,0
+
+            on_press:
+                root.back_on()
+
+            on_release:
+                root.back_off()
+                root.manager.transition = NoTransition()
+                app.root.current = 'home'
+
+            Image:
+                id: back_image
+                source: 'ASSETS/Buttons/OnBack.png'
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+                size: dp(40), dp(40)
