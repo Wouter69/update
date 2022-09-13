@@ -14,7 +14,7 @@
         orientation: 'vertical'
         spacing: dp(15)
         pos_hint: {'center_X': .5}
-        size_hint: .9, 1
+        size_hint: 1, 1
         padding: dp(20), dp(20), dp(20), dp(20)
 
         # -------------------------------------------------------
@@ -56,25 +56,16 @@
                         size_hint: .1, None
                         height: dp(40)
 
-                    Button:
+                    ToggleButton:
                         id: Sound_button
+                        background_color: 190/255,147/255,97/255,1
+                        text: 'on'
                         size_hint: None, None
                         width: dp(40)
                         height: dp(40)
-                        background_color: 0,0,0,0
+                        # background_color: 0,0,0,1
 
-                        on_press:
-                            root.sound_on()
-
-                        on_release:
-                            root.sound_off()
-
-                        Image:
-                            id: Sound_image
-                            source: 'ASSETS/Buttons/OnSound.png'
-                            center_x: self.parent.center_x
-                            center_y: self.parent.center_y
-                            size: dp(40), dp(40)
+                        on_state: root.on_sound_toggle_button_state(self)
 
                 # -------------------------------------------------------
                 # Setting - Music Toggle Button
@@ -91,25 +82,16 @@
                         font_size: sp(14)
                         size_hint: .1, 1
 
-                    Button:
+                    ToggleButton:
                         id: Music_button
+                        background_color: 190/255,147/255,97/255,1
+                        text: 'on'
                         size_hint: None, None
                         width: dp(40)
                         height: dp(40)
-                        background_color: 0,0,0,0
+                        # background_color: 0,0,0,0
 
-                        on_press:
-                            root.music_on()
-
-                        on_release:
-                            root.music_off()
-
-                        Image:
-                            id: Music_image
-                            source: 'ASSETS/Buttons/OnSound.png'
-                            center_x: self.parent.center_x
-                            center_y: self.parent.center_y
-                            size: dp(40), dp(40)
+                        on_state: root.on_music_toggle_button_state(self)
 
         # -------------------------------------------------------
         # Spacing
@@ -149,8 +131,8 @@
 
                 on_release:
                     root.report_off()
-                    root.dismiss()
                     Factory.Report().open()
+                    root.dismiss()
 
                 Image:
                     id: report_image
@@ -184,8 +166,8 @@
 
             on_release:
                 root.logout_off()
-                root.dismiss()
                 Factory.Logout().open()
+                root.dismiss()
 
             Image:
                 id: logout_image
@@ -193,6 +175,14 @@
                 center_x: self.parent.center_x
                 center_y: self.parent.center_y
                 size: dp(160), dp(80)
+
+        # -------------------------------------------------------
+        # Spacing
+        # -------------------------------------------------------
+
+        Label:
+            size_hint: 1,None
+            height:dp(20)
 
         # -------------------------------------------------------
         # Back Button

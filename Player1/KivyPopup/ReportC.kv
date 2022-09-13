@@ -2,7 +2,7 @@
 <ReportC>:
 
     size_hint: None, None
-    size: dp(300), dp(300)
+    size: dp(300), dp(550)
     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
     auto_dismiss: False
     background: 'ASSETS/back/ReportCPopup.png'
@@ -14,7 +14,7 @@
         orientation: 'vertical'
         spacing: dp(10)
         pos_hint: {'center_X': .5}
-        size_hint: .9, 1
+        size_hint: 1, 1
         padding: dp(20), dp(20), dp(20), dp(20)
 
         # -------------------------------------------------------
@@ -79,7 +79,7 @@
 
         Label:
             size_hint: 1, None
-            height: dp(10)
+            height: dp(70)
 
         # -------------------------------------------------------
         # Back Button
@@ -111,3 +111,11 @@
                     center_x: self.parent.center_x
                     center_y: self.parent.center_y
                     size: dp(40), dp(40)
+
+        # -------------------------------------------------------
+        # Spacing
+        # -------------------------------------------------------
+
+        Label:
+            size_hint: 1,None
+            height:dp(60)

@@ -2,7 +2,7 @@
 <welcome>:
 
     size_hint: None, None
-    size: dp(300), dp(300)
+    size: dp(300), dp(550)
     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
     auto_dismiss: False
     background: 'ASSETS/back/WelcomePopup.png'
@@ -53,6 +53,14 @@
             height: dp(50)
 
         # -------------------------------------------------------
+        # Spacing
+        # -------------------------------------------------------
+
+        Label:
+            size_hint: 1, None
+            height: dp(10)
+
+        # -------------------------------------------------------
         # Welcome - Continue Button
         # -------------------------------------------------------
 
@@ -84,4 +92,4 @@
 
         Label:
             size_hint: 1, None
-            height: dp(50)
+            height: dp(175)

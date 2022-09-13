@@ -14,7 +14,7 @@
         orientation: 'vertical'
         spacing: dp(15)
         pos_hint: {'center_X': .5}
-        size_hint: .9, 1
+        size_hint: 1, 1
         padding: dp(20), dp(20), dp(20), dp(20)
 
         # -------------------------------------------------------
@@ -209,9 +209,9 @@
 
             on_release:
                 root.submit_off()
-                root.dismiss()
                 app.root.current = 'home'
                 Factory.Welcome().open()
+                root.dismiss()
 
             Image:
                 id: submit_image
@@ -250,8 +250,8 @@
 
                 on_release:
                     root.back_off()
-                    root.dismiss()
                     Factory.Login().open()
+                    root.dismiss()
 
                 Image:
                     id: back_image

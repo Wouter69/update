@@ -14,7 +14,7 @@
         orientation: 'vertical'
         spacing: dp(15)
         pos_hint: {'center_X': .5}
-        size_hint: .9, 1
+        size_hint: 1, 1
         padding: dp(15), dp(15), dp(15), dp(15)
 
         # -------------------------------------------------------
@@ -171,7 +171,7 @@
 
         Label:
             size_hint: 1, None
-            height: dp(30)
+            height: dp(15)
 
         # -------------------------------------------------------
         # Login - Submit Button
@@ -190,9 +190,9 @@
 
             on_release:
                 root.submit_off()
-                root.dismiss()
                 app.root.current = 'home'
                 Factory.Welcome().open()
+                root.dismiss()
 
             Image:
                 id: submit_image
@@ -219,7 +219,15 @@
             font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
             font_size: sp(16)
             size_hint: 1, None
-            height: dp(70)
+            height: dp(60)
+
+        # -------------------------------------------------------
+        # Spacing
+        # -------------------------------------------------------
+
+        Label:
+            size_hint: 1, None
+            height: dp(.1)
 
         # -------------------------------------------------------
         # Register - Register Button
@@ -238,8 +246,8 @@
 
             on_release:
                 root.register_off()
-                root.dismiss()
                 Factory.Register().open()
+                root.dismiss()
 
             Image:
                 id: register_image
@@ -247,3 +255,11 @@
                 center_x: self.parent.center_x
                 center_y: self.parent.center_y
                 size: dp(160), dp(80)
+
+        # -------------------------------------------------------
+        # Spacing
+        # -------------------------------------------------------
+
+        Label:
+            size_hint: 1, None
+            height: dp(10)

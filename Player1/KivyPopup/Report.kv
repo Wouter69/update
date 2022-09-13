@@ -14,7 +14,7 @@
         orientation: 'vertical'
         spacing: dp(10)
         pos_hint: {'center_X': .5}
-        size_hint: .9, 1
+        size_hint: 1, 1
         padding: dp(20), dp(20), dp(20), dp(20)
 
         # -------------------------------------------------------
@@ -139,8 +139,8 @@
 
             on_release:
                 root.submit_off()
-                root.dismiss()
                 Factory.ReportC().open()
+                root.dismiss()
 
             Image:
                 id: submit_image

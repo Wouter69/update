@@ -5,7 +5,7 @@
     size: dp(300), dp(550)
     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
     auto_dismiss: False
-    background: 'ASSETS/back/ResetPopup.png'
+    background: 'ASSETS/back/LogoutPopup.png'
     title: ""
     separator_height: dp(0)
     seperator_color: None
@@ -14,7 +14,7 @@
         orientation: 'vertical'
         spacing: dp(10)
         pos_hint: {'center_X': .5}
-        size_hint: .9, 1
+        size_hint: 1, 1
         padding: dp(20), dp(20), dp(20), dp(20)
 
         # -------------------------------------------------------
@@ -88,9 +88,9 @@
 
             on_release:
                 root.logout_off()
-                root.dismiss()
                 app.root.current = 'loading'
                 Factory.Login().open()
+                root.dismiss()
 
             Image:
                 id: logout_image

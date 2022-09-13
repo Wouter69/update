@@ -38,7 +38,7 @@ Builder.load_file('KivyPopup/Logout.kv')
 Builder.load_file('KivyPopup/Report.kv')
 Builder.load_file('KivyPopup/ReportC.kv')
 
-Window.size = (300, 560)
+Window.size = (600, 1000)
 
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # GAME_
@@ -297,17 +297,17 @@ class Setting(Popup):
 
     # GRAPHIC THINGS
 
-    def sound_on(self):
-        self.ids.Sound_image.source = 'ASSETS/Buttons/OffSound.png'
+    def on_sound_toggle_button_state(self, widget):
+        if widget.state == "normal":
+            widget.text = 'on'
+        else:
+            widget.text = 'off'
 
-    def sound_off(self):
-        self.ids.Sound_image.source = 'ASSETS/Buttons/OnSound.png'
-
-    def music_on(self):
-        self.ids.Music_image.source = 'ASSETS/Buttons/OffSound.png'
-
-    def music_off(self):
-        self.ids.Music_image.source = 'ASSETS/Buttons/OnSound.png'
+    def on_music_toggle_button_state(self, widget):
+        if widget.state == "normal":
+            widget.text = 'on'
+        else:
+            widget.text = 'off'
 
     def report_on(self):
         self.ids.report_image.source = 'ASSETS/Buttons/OffReport.png'
@@ -683,7 +683,6 @@ class HomeScreen(Screen):
             user = str(name[1]).translate(str.maketrans('','',string.punctuation))
             icon = str(name[7]).translate(str.maketrans('','',string.punctuation))
             gender = str(name[6]).translate(str.maketrans('','',string.punctuation))
-
 
             print("NAME:: ", str(user))
             print("ICON:: ", str(icon))
