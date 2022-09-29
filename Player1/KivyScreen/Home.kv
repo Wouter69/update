@@ -50,6 +50,7 @@
 
             on_press:
                 root.store_on()
+                root.button_sound()
 
             on_release:
                 root.store_off()
@@ -77,11 +78,12 @@
 
             on_press:
                 root.playg_on()
+                root.button_sound()
 
             on_release:
                 root.playg_off()
                 root.manager.transition = NoTransition()
-                app.root.current = 'lobby'
+                app.root.current = 'game'
 
             Image:
                 id: PlayG_image
@@ -104,6 +106,7 @@
 
             on_press:
                 root.rank_on()
+                root.button_sound()
 
             on_release:
                 root.rank_off()
@@ -130,6 +133,7 @@
 
             on_press:
                 root.settings_on()
+                root.popup_sound()
 
             on_release:
                 root.settings_off()

@@ -179,27 +179,20 @@
 
         Button:
             id: submit_button
+            border: 0,0,0,0
+            background_normal: 'ASSETS/Buttons/OnSubmit.png'
+            background_down: 'ASSETS/Buttons/OffSubmit.png'
             size_hint: None, None
             width: dp(160)
             height: dp(40)
             pos_hint:{'center_x': .5, }
-            background_color: 0,0,0,0
 
-            on_press:
-                root.submit_on()
+            # on_press:
 
             on_release:
-                root.submit_off()
                 app.root.current = 'home'
                 Factory.Welcome().open()
                 root.dismiss()
-
-            Image:
-                id: submit_image
-                source:'ASSETS/Buttons/OnSubmit.png'
-                center_x: self.parent.center_x
-                center_y: self.parent.center_y
-                size: dp(160), dp(80)
 
         # -------------------------------------------------------
         # Spacing
@@ -235,26 +228,19 @@
 
         Button:
             id: register_button
+            border: 0,0,0,0
+            background_normal: 'ASSETS/Buttons/OnRegister.png'
+            background_down: 'ASSETS/Buttons/OffRegister.png'
             size_hint: None, None
             width: dp(160)
             height: dp(40)
             pos_hint:{'center_x': .5, }
-            background_color: 0,0,0,0
 
-            on_press:
-                root.register_on()
+            # on_press:
 
             on_release:
-                root.register_off()
                 Factory.Register().open()
                 root.dismiss()
-
-            Image:
-                id: register_image
-                source:'ASSETS/Buttons/OnRegister.png'
-                center_x: self.parent.center_x
-                center_y: self.parent.center_y
-                size: dp(160), dp(80)
 
         # -------------------------------------------------------
         # Spacing

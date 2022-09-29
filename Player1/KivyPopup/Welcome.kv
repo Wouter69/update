@@ -48,17 +48,9 @@
             text: 'Rank'
             color: 0,0,0,1
             font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
-            font_size: 25
+            font_size: sp(25)
             size_hint: 1, None
             height: dp(50)
-
-        # -------------------------------------------------------
-        # Spacing
-        # -------------------------------------------------------
-
-        Label:
-            size_hint: 1, None
-            height: dp(10)
 
         # -------------------------------------------------------
         # Welcome - Continue Button
@@ -66,25 +58,18 @@
 
         Button:
             id: continue_button
+            border: 0,0,0,0
+            background_normal: 'ASSETS/Buttons/OnContinue.png'
+            background_down: 'ASSETS/Buttons/OffContinue.png'
             size_hint: None, None
             width: dp(160)
             height: dp(40)
             pos_hint:{'center_x': .5, }
-            background_color: 0,0,0,0
 
-            on_press:
-                root.continue_on()
+            # on_press:
 
             on_release:
-                root.continue_off()
                 root.dismiss()
-
-            Image:
-                id: continue_image
-                source:'ASSETS/Buttons/OnContinue.png'
-                center_x: self.parent.center_x
-                center_y: self.parent.center_y
-                size: dp(160), dp(80)
 
         # -------------------------------------------------------
         # Spacing

@@ -131,8 +131,8 @@
 
                 on_release:
                     root.report_off()
-                    Factory.Report().open()
                     root.dismiss()
+                    Factory.Report().open()
 
                 Image:
                     id: report_image
@@ -166,8 +166,8 @@
 
             on_release:
                 root.logout_off()
-                Factory.Logout().open()
                 root.dismiss()
+                Factory.Logout().open()
 
             Image:
                 id: logout_image
