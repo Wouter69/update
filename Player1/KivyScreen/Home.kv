@@ -21,13 +21,14 @@
             size_hint: 1, .5
 
             Image:
-                id: Icon_
-                source: "ASSETS/PlayerIcon/SagittariusM.png"
+                #id: Icon_
+                source: root.my_icon
+                #source: "ASSETS/PlayerIcon/SagittariusM.png"
                 size_hint: 1, 4
 
             Label:
-                id: Player
-                text: '...'
+                #id: Player_
+                text: root.my_name
                 color: 1,1,1,1
                 bold: True
                 outline_color: 0,0,0,1
@@ -137,7 +138,8 @@
 
             on_release:
                 root.settings_off()
-                Factory.Setting().open()
+                root.open_settings()
+
 
             Image:
                 id: settings_image

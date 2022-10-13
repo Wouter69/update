@@ -2,6 +2,7 @@
 <GameScreen>:
     name: 'game'
     FloatLayout:
+        id: Game_Screen_layout
         canvas.before:
             Rectangle:
                 source: 'ASSETS/back/GameB.jpg'
@@ -13,6 +14,7 @@
         # -------------------------------------------------------
 
         FloatLayout:
+            id: Opponent
             allow_stretch: False
             keep_ratio: True
             size_hint: 1, 1
@@ -53,6 +55,7 @@
                 pos_hint: {'center_x': .65, 'y': .7525}
 
             BoxLayout:
+                id: Opponent_tokens
                 size_hint: .845, .1635
                 pos_hint: {'center_x': .5, 'y': .6645}
 
@@ -212,7 +215,7 @@
 
         Image:
             id: Player_Board
-            source: 'ASSETS/back/Pla_board.png'
+            source: 'ASSETS/PlayerIcon/Player_board.png'
             allow_stretch: True
             keep_ratio: False
             size_hint: .895, .34
@@ -418,8 +421,8 @@
             background_image: 'ASSETS/Card_board/Card_board.png'
             strip_border: [10,10,10,10]
             border:(0,0,0,0)
-            tab_height: dp(24)
-            tab_width: dp(24)
+            tab_height: dp(30)
+            tab_width: dp(40)
             tab_pos: 'top_right'
             size_hint: .895, .26
             pos_hint: {'center_x': .5, 'y': .01}
@@ -448,7 +451,7 @@
                             padding: (dp(5),dp(5),dp(5),dp(5))
 
                             ToggleButton:
-                                id: Player_Field
+                                id: FTree1
                                 border: 0,0,0,0
                                 background_normal: 'ASSETS/FTCard/FTree1_normal.png'
                                 background_down: 'ASSETS/FTCard/FTree1_down.png'
@@ -456,8 +459,12 @@
                                 width: dp(78)
                                 height: dp(100)
 
+                                on_state:
+                                    root.ftree1_select(self)
+
+
                             ToggleButton:
-                                id: Player_Field
+                                id: FTree2
                                 border: 0,0,0,0
                                 background_normal: 'ASSETS/FTCard/FTree2_normal.png'
                                 background_down: 'ASSETS/FTCard/FTree2_down.png'
@@ -465,8 +472,11 @@
                                 width: dp(78)
                                 height: dp(100)
 
+                                on_state:
+                                    root.ftree2_select(self)
+
                             ToggleButton:
-                                id: Player_Field
+                                id: FTree3
                                 border: 0,0,0,0
                                 background_normal: 'ASSETS/FTCard/FTree3_normal.png'
                                 background_down: 'ASSETS/FTCard/FTree3_down.png'
@@ -474,8 +484,12 @@
                                 width: dp(78)
                                 height: dp(100)
 
+                                on_state:
+                                    root.ftree3_select(self)
+
                             ToggleButton:
-                                id: Player_Field
+                                id: FTreeC
+                                group: 'pick one'
                                 border: 0,0,0,0
                                 background_normal: 'ASSETS/FTCard/FTreeC_normal.png'
                                 background_down: 'ASSETS/FTCard/FTreeC_down.png'
@@ -483,14 +497,21 @@
                                 width: dp(78)
                                 height: dp(100)
 
+                                on_state:
+                                    root.ftree_c_select(self)
+
                             ToggleButton:
-                                id: Player_Field
+                                id: FTreeJ
+                                group: 'pick one'
                                 border: 0,0,0,0
                                 background_normal: 'ASSETS/FTCard/FTreeJ_normal.png'
                                 background_down: 'ASSETS/FTCard/FTreeJ_down.png'
                                 size_hint: None, None
                                 width: dp(78)
                                 height: dp(100)
+
+                                on_state:
+                                    root.ftree_j_select(self)
 
             # -------------------------------------------------------
             # OX
@@ -533,20 +554,21 @@
                 background_down: 'ASSETS/Card_board/Rune_tab_down.png'
 
                 BoxLayout:
-                    id: Air_Field
+                    id: Rune_Field
                     background_color: 0,0,0,0
 
                     ScrollView:
                         do_scroll_X: True
                         do_scroll_y: False
                         StackLayout:
-                            size_hint: 2, None
+                            size_hint: 1, None
                             height: self.minimum_height
                             spacing: dp(5), dp(5)
                             padding: (dp(5),dp(5),dp(5),dp(5))
 
                             ToggleButton:
-                                id: Player_Field
+                                id: FTree_Allgiz
+                                group: 'pick one'
                                 border: 0,0,0,0
                                 background_normal: 'ASSETS/FTCard/FTree_Allgiz_normal.png'
                                 background_down: 'ASSETS/FTCard/FTree_Allgiz_down.png'
@@ -554,9 +576,12 @@
                                 width: dp(78)
                                 height: dp(100)
 
+                                on_state:
+                                    root.ftree_allgiz_select(self)
 
                             ToggleButton:
-                                id: Player_Field
+                                id: FTree_Hargool
+                                group: 'pick one'
                                 border: 0,0,0,0
                                 background_normal: 'ASSETS/FTCard/FTree_Hargool_normal.png'
                                 background_down: 'ASSETS/FTCard/FTree_Hargool_down.png'
@@ -564,9 +589,12 @@
                                 width: dp(78)
                                 height: dp(100)
 
+                                on_state:
+                                    root.ftree_hargool_select(self)
 
                             ToggleButton:
-                                id: Player_Field
+                                id: FTree_Yharha
+                                group: 'pick one'
                                 border: 0,0,0,0
                                 background_normal: 'ASSETS/FTCard/FTree_Yharha_normal.png'
                                 background_down: 'ASSETS/FTCard/FTree_Yharha_down.png'
@@ -574,6 +602,8 @@
                                 width: dp(78)
                                 height: dp(100)
 
+                                on_state:
+                                    root.ftree_yharha_select(self)
 
             # -------------------------------------------------------
             # Pocked
@@ -599,11 +629,561 @@
                             padding: (dp(5),dp(5),dp(5),dp(5))
 
                             ToggleButton:
-                                id: Player_Field
+                                id: Pocked_Allgiz
+                                group: 'pick one'
                                 border: 0,0,0,0
-                                background_normal: 'ASSETS/PCard/CB_Pocked_normal.png'
-                                background_down: 'ASSETS/PCard/CB_Pocked_down.png'
+                                background_normal: 'ASSETS/PCard/Pocked_Allgiz_normal.png'
+                                background_down: 'ASSETS/PCard/Pocked_Allgiz_down.png'
                                 size_hint: None, None
                                 width: dp(78)
                                 height: dp(100)
+
+                                on_state:
+                                    root.pocked_allgiz_select(self)
+
+                            ToggleButton:
+                                id: Pocked_Er
+                                group: 'pick one'
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/PCard/Pocked_Er_normal.png'
+                                background_down: 'ASSETS/PCard/Pocked_Er_down.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.pocked_er_select(self)
+
+                            ToggleButton:
+                                id: Pocked_Fe
+                                group: 'pick one'
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/PCard/Pocked_Fe_normal.png'
+                                background_down: 'ASSETS/PCard/Pocked_Fe_down.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.pocked_fe_select(self)
+
+                            ToggleButton:
+                                id: Pocked_Hargool
+                                group: 'pick one'
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/PCard/Pocked_Hargool_normal.png'
+                                background_down: 'ASSETS/PCard/Pocked_Hargool_down.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.pocked_hargool_select(self)
+
+                            ToggleButton:
+                                id: Pocked_Largoo
+                                group: 'pick one'
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/PCard/Pocked_Largoo_normal.png'
+                                background_down: 'ASSETS/PCard/Pocked_Largoo_down.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.pocked_largoo_select(self)
+
+                            ToggleButton:
+                                id: Pocked_Yharha
+                                group: 'pick one'
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/PCard/Pocked_Yharha_normal.png'
+                                background_down: 'ASSETS/PCard/Pocked_Yharha_down.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.pocked_yharha_select(self)
+
+        # -------------------------------------------------------
+        # Card Selection
+        # -------------------------------------------------------
+
+        Image:
+            id: Select_Background
+            opacity: 0
+            source: "ASSETS/back/Card_Holder.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 1, None
+            height: dp(325)
+            pos_hint: {'x': 0, 'center_y': .578}
+
+        # -------------------------------------------------------
+        # Creation Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: FTreeC_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                source: "ASSETS/FTCard/FTreeC_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Creation_Card_Button
+                deactivate: True
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'center_x': .5, 'y': .5}
+
+        # -------------------------------------------------------
+        # Joker Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: FTreeJ_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                source: "ASSETS/FTCard/FTreeJ_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Jocker_Card_Button
+                deactivate: True
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'center_x': .5, 'y': .5}
+
+        # -------------------------------------------------------
+        # Allgiz Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: FTree_Allgiz_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                source: "ASSETS/FTCard/FTree_Allgiz_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Allgiz_Card_Button
+                deactivate: True
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'center_x': .5, 'y': .5}
+
+        # -------------------------------------------------------
+        # Hargool Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: FTree_Hargool_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                source: "ASSETS/FTCard/FTree_Hargool_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Hargool_Card_Button
+                deactivate: True
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'center_x': .5, 'y': .5}
+
+        # -------------------------------------------------------
+        # Yharha Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: FTree_Yharha_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                source: "ASSETS/FTCard/FTree_Yharha_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Yharha_Card_Button
+                deactivate: True
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'center_x': .5, 'y': .5}
+
+        # -------------------------------------------------------
+        # Pocked Allgiz Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: Pocked_Allgiz_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                source: "ASSETS/PCard/Pocked_Allgiz_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Allgiz_Pocked_Card_Button
+                deactivate: True
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'center_x': .5, 'y': .5}
+
+        # -------------------------------------------------------
+        # Pocked Er Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: Pocked_Er_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                source: "ASSETS/PCard/Pocked_Er_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Er_Pocked_Card_Button
+                deactivate: True
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'center_x': .5, 'y': .5}
+
+        # -------------------------------------------------------
+        # Pocked Fe Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: Pocked_Fe_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                source: "ASSETS/PCard/Pocked_Fe_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Pocked_Fe_Card_Button
+                deactivate: True
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'center_x': .5, 'y': .5}
+
+        # -------------------------------------------------------
+        # Pocked Hargool Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: Pocked_Hargool_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                source: "ASSETS/PCard/Pocked_Hargool_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Pocked_Hargool_Card_Button
+                deactivate: True
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'center_x': .5, 'y': .5}
+
+        # -------------------------------------------------------
+        # Pocked Largoo Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: Pocked_Largoo_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                source: "ASSETS/PCard/Pocked_Largoo_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Pocked_Largoo_Card_Button
+                deactivate: True
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'center_x': .5, 'y': .5}
+
+        # -------------------------------------------------------
+        # Pocked Yharha Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: Pocked_Yharha_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                source: "ASSETS/PCard/Pocked_Yharha_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Pocked_Yharha_Card_Button
+                deactivate: True
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'center_x': .5, 'y': .5}
+
+        Image:
+            id: FTree1_Select
+            opacity: 0
+            source: "ASSETS/FTCard/FTree1_normal.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: None, None
+            width: dp(155)
+            height: dp(200)
+            pos_hint: {'center_x': .30, 'center_y': .648}
+
+        Image:
+            id: FTree2_Select
+            opacity: 0
+            source: "ASSETS/FTCard/FTree2_normal.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: None, None
+            width: dp(155)
+            height: dp(200)
+            pos_hint: {'center_x': .5, 'center_y': .648}
+
+        Image:
+            id: FTree3_Select
+            opacity: 0
+            source: "ASSETS/FTCard/FTree3_normal.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: None, None
+            width: dp(155)
+            height: dp(200)
+            pos_hint: {'center_x': .70, 'center_y': .648}
+
+
+
+
+
 

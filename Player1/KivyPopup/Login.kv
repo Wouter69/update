@@ -190,9 +190,9 @@
             # on_press:
 
             on_release:
-                app.root.current = 'home'
-                Factory.Welcome().open()
+                root.go()
                 root.dismiss()
+
 
         # -------------------------------------------------------
         # Spacing
@@ -239,7 +239,7 @@
             # on_press:
 
             on_release:
-                Factory.Register().open()
+                root.to_reg()
                 root.dismiss()
 
         # -------------------------------------------------------

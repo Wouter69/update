@@ -67,6 +67,7 @@
 
                         on_state: root.on_sound_toggle_button_state(self)
 
+
                 # -------------------------------------------------------
                 # Setting - Music Toggle Button
                 # -------------------------------------------------------
@@ -131,8 +132,9 @@
 
                 on_release:
                     root.report_off()
+                    root.open_report()
                     root.dismiss()
-                    Factory.Report().open()
+
 
                 Image:
                     id: report_image
@@ -166,8 +168,10 @@
 
             on_release:
                 root.logout_off()
+                root.open_Logout()
                 root.dismiss()
-                Factory.Logout().open()
+
+
 
             Image:
                 id: logout_image

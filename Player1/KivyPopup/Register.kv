@@ -209,8 +209,7 @@
 
             on_release:
                 root.submit_off()
-                app.root.current = 'home'
-                Factory.Welcome().open()
+                root.record_()
                 root.dismiss()
 
             Image:
@@ -250,8 +249,9 @@
 
                 on_release:
                     root.back_off()
-                    Factory.Login().open()
+                    root.to_login()
                     root.dismiss()
+
 
                 Image:
                     id: back_image
