@@ -1,24 +1,27 @@
 
-##ToDo:
-    # PROFILE UPDATER ->   {
-    #                       LOGIN <<- LOAD FULL PROFILE:: SERVER<<
-    #                       WELCOME_POPUP: REFRESH UPDATE
-    #                       HOME_SCREEN: REFRESH UPDATE
-    #                       RANKED_LIST: CURRENT_LEVEL
-    #                       }
-    # AUDIO CONTROLS
-    # REPORT LOGGING
-    # RANKED LISTS ->      {
-    #                       USE SAND_BOX_METHOD
-    #                       UPDATE: 
-    #                           *GLOBAL->(MAKE LIST ON SERVER)  
-    #                           *LOCAL ->(CHECK FOR MATCHING COUNTRIES)
-    #                       }
-    # 
-    #       THEN::
-    # 
-    # LOBBY -> 
-    # GAME_SCREEN -> "FUCKTONS_ToDo"
+# ---------------------------------------------------------------
+# ToDo:
+# ---------------------------------------------------------------
+
+# PROFILE UPDATER ->
+#                   LOGIN <<- LOAD FULL PROFILE:: SERVER<<
+#                   WELCOME_POPUP: REFRESH UPDATE
+#                   HOME_SCREEN: REFRESH UPDATE
+#                   RANKED_LIST: CURRENT_LEVEL
+
+# AUDIO CONTROLS
+# REPORT LOGGING
+
+# RANKED LISTS ->
+#                   USE SAND_BOX_METHOD
+#                   UPDATE:
+#                           *GLOBAL->(MAKE LIST ON SERVER)
+#                           *LOCAL ->(CHECK FOR MATCHING COUNTRIES)
+
+#       THEN::
+
+# LOBBY ->
+# GAME_SCREEN -> "Functions_ToDo"
 
 
 # LIB REQUIRED IMPORTS
@@ -69,9 +72,9 @@ Window.size = (300, 550)
 
 Config.set('graphics', 'resizable', True)
 
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# ---------------------------------------------------------------
 # POPUPS
-# ********************************************************
+# ---------------------------------------------------------------
 
 
 class ReportC(Popup):
@@ -100,8 +103,8 @@ class Setting(Popup):
         Setting().dismiss()
 
     def sound_state_off(self):
-        #GET FILE DATA [SETTING.txt]
-        #UPDATE
+        # GET FILE DATA [SETTING.txt]
+        # UPDATE
         audio_state = self.FM.read_file("SETTINGS_STATE/SETTINGS.txt", "*")
         for _ in audio_state:
             print(str(_))
@@ -110,24 +113,23 @@ class Setting(Popup):
         pass
 
     def sound_state_on(self):
-        #GET FILE DATA [SETTING.txt]
-        #UPDATE
+        # GET FILE DATA [SETTING.txt]
+        # UPDATE
         pass
 
     def music_state_off(self):
-        #GET FILE DATA [SETTING.txt]
-        #UPDATE
+        # GET FILE DATA [SETTING.txt]
+        # UPDATE
         pass
 
     def music_state_on(self):
-        #GET FILE DATA [SETTING.txt]
-        #UPDATE
+        # GET FILE DATA [SETTING.txt]
+        # UPDATE
         pass
-
 
     # GRAPHIC THINGS
     def on_sound_toggle_button_state(self, widget):
-        #WRITE TO SETTINGS FILE AND UPDATE ON ALL SCREENS AND POPUPS
+        # WRITE TO SETTINGS FILE AND UPDATE ON ALL SCREENS AND POPUPS
         if widget.state == "normal":
             widget.text = 'on'
             self.sound_state_on()
@@ -136,7 +138,7 @@ class Setting(Popup):
             self.sound_state_off()
 
     def on_music_toggle_button_state(self, widget):
-        #WRITE TO SETTINGS FILE AND UPDATE ON ALL SCREENS AND POPUPS
+        # WRITE TO SETTINGS FILE AND UPDATE ON ALL SCREENS AND POPUPS
         if widget.state == "normal":
             widget.text = 'on'
         else:
@@ -213,9 +215,9 @@ class Register(Popup):
                 if day >= 20 or day <= 18:  # JANUARY
                     return "Capricorn"
             elif 1 <= month <= 2:  # JANUARY
-                if day >= 19 or day <= 18:  # FEBUARY
+                if day >= 19 or day <= 18:  # FEBRUARY
                     return "Aquarius"
-            elif 2 <= month <= 3:  # FEBUARY
+            elif 2 <= month <= 3:  # FEBRUARY
                 if day >= 19 or day <= 20:  # MARCH
                     return "Pisces"
         except Exception as e:
@@ -229,7 +231,7 @@ class Register(Popup):
         name = str(self.ids['Name'].text)
         print("NAME", str(name))
 
-        #DATA_CAPTURE
+        # DATA_CAPTURE
         day = str(self.ids['Birth_DAY'].text)
         month = str(self.ids['Birth_MONTH'].text)
         year = str(self.ids['Birth_YEAR'].text)
@@ -244,7 +246,7 @@ class Register(Popup):
         e_mail = str(self.ids['input_RegMail'].text)
         print("EMAIL:: ", str(e_mail))
 
-        #DATA_ENCAP >> REGISTERATION
+        # DATA_ENCAP >> REGISTERATION
         player_data = "REG*"+name+"*"+date+"*"+country+"*"+e_mail+"*"+gender+"*"+icon
         player_profile = "PROFILE*"+name+"*"+date+"*"+country+"*"+e_mail+"*"+gender+"*"+icon
         self.FM.write_file("SOCKET_DATA/OUT_BOUND.txt", player_data, "*", "w")
@@ -328,11 +330,18 @@ class Welcome(Popup):
             self.ids['WelcomeName'].text = str(user)
 
 
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# ---------------------------------------------------------------
 # SCREENS
-# ********************************************************
+# ---------------------------------------------------------------
 
 class GameScreen(Screen):
+    # -----------------------------------------------------------
+    # Deck
+    # -----------------------------------------------------------
+
+    def deck_button(self, widget):
+        print('Deck')
+
     # -----------------------------------------------------------
     # Tree Hand
     # -----------------------------------------------------------
@@ -340,100 +349,532 @@ class GameScreen(Screen):
     def ftree1_select(self, widget):
         if widget.state == 'normal':
             self.ids.Select_Background.opacity = 0
-            self.ids.FTree1_Select.opacity = 0
+            self.ids.FTree1_Image.opacity = 0
         else:
             self.ids.Select_Background.opacity = .75
-            self.ids.FTree1_Select.opacity = 1
+            self.ids.FTree1_Image.opacity = 1
 
     def ftree2_select(self, widget):
         if widget.state == 'normal':
             self.ids.Select_Background.opacity = 0
-            self.ids.FTree2_Select.opacity = 0
+            self.ids.FTree2_Image.opacity = 0
         else:
             self.ids.Select_Background.opacity = .75
-            self.ids.FTree2_Select.opacity = 1
+            self.ids.FTree2_Image.opacity = 1
 
     def ftree3_select(self, widget):
         if widget.state == 'normal':
             self.ids.Select_Background.opacity = 0
-            self.ids.FTree3_Select.opacity = 0
+            self.ids.FTree3_Image.opacity = 0
         else:
             self.ids.Select_Background.opacity = .75
-            self.ids.FTree3_Select.opacity = 1
+            self.ids.FTree3_Image.opacity = 1
 
-    def ftree_c_select(self, widget):
+    # Ftree Creation
+
+    def ftree_c_select(self, widget, *args):
+
         if widget.state == 'normal':
+            self.ids.Select_Creation_Card_Button.pos_hint = {'x': 2, 'y': .5}
             self.ids.FTreeC_Select.opacity = 0
+            self.ids.Opponent_unavailable.opacity = 0
+            self.ids.Pocked.opacity = 1
+            self.ids.Rune.opacity = 1
+
+            self.ids.FTree1.disabled = False
+            self.ids.FTree2.disabled = False
+            self.ids.FTree3.disabled = False
+            self.ids.FTreeC.disabled = False
+            self.ids.FTreeJ.disabled = False
+            self.ids.Rune.disabled = False
+            self.ids.Pocked.disabled = False
+            self.ids.Deck_button.disabled = False
+            self.ids.Player_tokens.disabled = True
+
         else:
+            self.ids.Select_Creation_Card_Button.pos_hint = {'center_x': .5, 'y': .5}
             self.ids.FTreeC_Select.opacity = 1
+            self.ids.Pocked.opacity = 0
+            self.ids.Rune.opacity = 0
+
+            self.ids.Deck_button.disabled = True
+
+
+
+    def select_ftree_creation(self):
+
+        print('FTree Creation')
+        self.ids.Select_Creation_Card_Button.pos_hint = {'x': 2, 'y': .5}
+        self.ids.FTreeC_Select.opacity = 0
+        self.ids.Opponent_unavailable.opacity = 1
+
+        self.ids.FTree1.disabled = True
+        self.ids.FTree2.disabled = True
+        self.ids.FTree3.disabled = True
+        self.ids.FTreeC.disabled = False
+        self.ids.FTreeJ.disabled = True
+        self.ids.Rune.disabled = True
+        self.ids.Pocked.disabled = True
+        self.ids.Player_tokens.disabled = False
+
+    # Ftree Joker
 
     def ftree_j_select(self, widget):
+
         if widget.state == 'normal':
+            self.ids.Select_Jocker_Card_Button.pos_hint = {'x': 2, 'y': .5}
             self.ids.FTreeJ_Select.opacity = 0
+            self.ids.Opponent_unavailable.opacity = 0
+            self.ids.Pocked.opacity = 1
+            self.ids.Rune.opacity = 1
+
+            self.ids.FTree1.disabled = False
+            self.ids.FTree2.disabled = False
+            self.ids.FTree3.disabled = False
+            self.ids.FTreeC.disabled = False
+            self.ids.FTreeJ.disabled = False
+            self.ids.Rune.disabled = False
+            self.ids.Pocked.disabled = False
+            self.ids.Deck_button.disabled = False
+            self.ids.Player_tokens.disabled = True
+
         else:
+            self.ids.Select_Jocker_Card_Button.pos_hint = {'center_x': .5, 'y': .5}
             self.ids.FTreeJ_Select.opacity = 1
+            self.ids.Pocked.opacity = 0
+            self.ids.Rune.opacity = 0
+
+            self.ids.Deck_button.disabled = True
+
+    def select_ftree_jocker(self):
+
+        print('FTree Joker')
+        self.ids.Select_Jocker_Card_Button.pos_hint = {'x': 2, 'y': .5}
+        self.ids.FTreeJ_Select.opacity = 0
+        self.ids.Opponent_unavailable.opacity = 1
+
+        self.ids.FTree1.disabled = True
+        self.ids.FTree2.disabled = True
+        self.ids.FTree3.disabled = True
+        self.ids.FTreeC.disabled = True
+        self.ids.FTreeJ.disabled = False
+        self.ids.Rune.disabled = True
+        self.ids.Pocked.disabled = True
+        self.ids.Player_tokens.disabled = False
 
     # -----------------------------------------------------------
     # Rune Hand
     # -----------------------------------------------------------
 
+    # Rune Allgiz
+
     def ftree_allgiz_select(self, widget):
+
         if widget.state == 'normal':
+            self.ids.Select_Allgiz_Card_Button.pos_hint = {'x': 2, 'y': .5}
             self.ids.FTree_Allgiz_Select.opacity = 0
+            self.ids.Opponent_unavailable.opacity = 0
+            self.ids.Pocked.opacity = 1
+            self.ids.Air.opacity = 1
+
+            self.ids.FTree_Allgiz.disabled = False
+            self.ids.FTree_Hargool.disabled = False
+            self.ids.FTree_Yharha.disabled = False
+            self.ids.Air.disabled = False
+            self.ids.Pocked.disabled = False
+            self.ids.Deck_button.disabled = False
+            self.ids.Player_tokens.disabled = True
+
         else:
+            self.ids.Select_Allgiz_Card_Button.pos_hint = {'center_x': .5, 'y': .5}
             self.ids.FTree_Allgiz_Select.opacity = 1
+            self.ids.Pocked.opacity = 0
+            self.ids.Air.opacity = 0
+
+            self.ids.Deck_button.disabled = True
+
+    def select_rune_allgiz(self):
+
+        print('Rune Allgiz')
+        self.ids.Select_Allgiz_Card_Button.pos_hint = {'x': 2, 'y': .5}
+        self.ids.FTree_Allgiz_Select.opacity = 0
+        self.ids.Opponent_unavailable.opacity = 1
+
+        self.ids.FTree_Allgiz.disabled = False
+        self.ids.FTree_Hargool.disabled = True
+        self.ids.FTree_Yharha.disabled = True
+        self.ids.Air.disabled = True
+        self.ids.Pocked.disabled = True
+        self.ids.Player_tokens.disabled = False
+
+    # Rune Hargool
 
     def ftree_hargool_select(self, widget):
+
         if widget.state == 'normal':
+            self.ids.Select_Hargool_Card_Button.pos_hint = {'x': 2, 'y': .5}
             self.ids.FTree_Hargool_Select.opacity = 0
+            self.ids.Player_unavailable.opacity = 0
+            self.ids.Pocked.opacity = 1
+            self.ids.Air.opacity = 1
+
+            self.ids.FTree_Allgiz.disabled = False
+            self.ids.FTree_Hargool.disabled = False
+            self.ids.FTree_Yharha.disabled = False
+            self.ids.Air.disabled = False
+            self.ids.Pocked.disabled = False
+            self.ids.Deck_button.disabled = False
+            self.ids.Opponent_tokens.disabled = True
+
         else:
+            self.ids.Select_Hargool_Card_Button.pos_hint = {'center_x': .5, 'y': .5}
             self.ids.FTree_Hargool_Select.opacity = 1
+            self.ids.Pocked.opacity = 0
+            self.ids.Air.opacity = 0
+
+            self.ids.Deck_button.disabled = True
+
+    def select_rune_hargool(self):
+
+        print('Rune Hargool')
+        self.ids.Select_Hargool_Card_Button.pos_hint = {'x': 2, 'y': .5}
+        self.ids.FTree_Hargool_Select.opacity = 0
+        self.ids.Player_unavailable.opacity = 1
+
+        self.ids.FTree_Allgiz.disabled = True
+        self.ids.FTree_Hargool.disabled = False
+        self.ids.FTree_Yharha.disabled = True
+        self.ids.Air.disabled = True
+        self.ids.Pocked.disabled = True
+        self.ids.Opponent_tokens.disabled = False
+
+    # Rune Yharha
 
     def ftree_yharha_select(self, widget):
+
         if widget.state == 'normal':
+            self.ids.Select_Yharha_Card_Button.pos_hint = {'x': 2, 'y': .5}
             self.ids.FTree_Yharha_Select.opacity = 0
+            self.ids.Player_unavailable.opacity = 0
+            self.ids.Pocked.opacity = 1
+            self.ids.Air.opacity = 1
+
+            self.ids.FTree_Allgiz.disabled = False
+            self.ids.FTree_Hargool.disabled = False
+            self.ids.FTree_Yharha.disabled = False
+            self.ids.Air.disabled = False
+            self.ids.Pocked.disabled = False
+            self.ids.Deck_button.disabled = False
+            self.ids.Opponent_tokens.disabled = True
+
         else:
+            self.ids.Select_Yharha_Card_Button.pos_hint = {'center_x': .5, 'y': .5}
             self.ids.FTree_Yharha_Select.opacity = 1
+            self.ids.Pocked.opacity = 0
+            self.ids.Air.opacity = 0
+
+            self.ids.Deck_button.disabled = True
+
+    def select_rune_yharha(self):
+
+        print('Rune Yharha')
+        self.ids.Select_Yharha_Card_Button.pos_hint = {'x': 2, 'y': .5}
+        self.ids.FTree_Yharha_Select.opacity = 0
+        self.ids.Player_unavailable.opacity = 1
+
+        self.ids.FTree_Allgiz.disabled = True
+        self.ids.FTree_Hargool.disabled = True
+        self.ids.FTree_Yharha.disabled = False
+        self.ids.Air.disabled = True
+        self.ids.Pocked.disabled = True
+        self.ids.Opponent_tokens.disabled = False
 
     # -----------------------------------------------------------
     # Pocked Hand
     # -----------------------------------------------------------
 
+    # Pocked Allgiz
+
     def pocked_allgiz_select(self, widget):
+
         if widget.state == 'normal':
+            self.ids.Select_Allgiz_Pocked_Card_Button.pos_hint = {'x': 2, 'y': .5}
             self.ids.Pocked_Allgiz_Select.opacity = 0
+            self.ids.Opponent_unavailable.opacity = 0
+            self.ids.Rune.opacity = 1
+            self.ids.Air.opacity = 1
+
+            self.ids.Pocked_Allgiz.disabled = False
+            self.ids.Pocked_Er.disabled = False
+            self.ids.Pocked_Fe.disabled = False
+            self.ids.Pocked_Hargool.disabled = False
+            self.ids.Pocked_Largoo.disabled = False
+            self.ids.Pocked_Yharha.disabled = False
+            self.ids.Air.disabled = False
+            self.ids.Rune.disabled = False
+            self.ids.Deck_button.disabled = False
+            self.ids.Player_tokens.disabled = True
+
         else:
+            self.ids.Select_Allgiz_Pocked_Card_Button.pos_hint = {'center_x': .5, 'y': .5}
             self.ids.Pocked_Allgiz_Select.opacity = 1
+            self.ids.Rune.opacity = 0
+            self.ids.Air.opacity = 0
 
-    def pocked_hargool_select(self, widget):
-        if widget.state == 'normal':
-            self.ids.Pocked_Hargool_Select.opacity = 0
-        else:
-            self.ids.Pocked_Hargool_Select.opacity = 1
+            self.ids.Deck_button.disabled = True
 
-    def pocked_yharha_select(self, widget):
-        if widget.state == 'normal':
-            self.ids.Pocked_Yharha_Select.opacity = 0
-        else:
-            self.ids.Pocked_Yharha_Select.opacity = 1
+    def select_pocked_allgiz(self):
+
+        print('Pocked Allgiz')
+        self.ids.Select_Allgiz_Pocked_Card_Button.pos_hint = {'x': 2, 'y': .5}
+        self.ids.Pocked_Allgiz_Select.opacity = 0
+        self.ids.Opponent_unavailable.opacity = 1
+
+        self.ids.Pocked_Allgiz.disabled = False
+        self.ids.Pocked_Er.disabled = True
+        self.ids.Pocked_Fe.disabled = True
+        self.ids.Pocked_Hargool.disabled = True
+        self.ids.Pocked_Largoo.disabled = True
+        self.ids.Pocked_Yharha.disabled = True
+        self.ids.Air.disabled = True
+        self.ids.Rune.disabled = True
+        self.ids.Player_tokens.disabled = False
+
+    # Pocked Er
 
     def pocked_er_select(self, widget):
+
         if widget.state == 'normal':
+            self.ids.Select_Er_Pocked_Card_Button.pos_hint = {'x': 2, 'y': .5}
             self.ids.Pocked_Er_Select.opacity = 0
+            self.ids.Opponent_unavailable.opacity = 0
+            self.ids.Rune.opacity = 1
+            self.ids.Air.opacity = 1
+
+            self.ids.Pocked_Allgiz.disabled = False
+            self.ids.Pocked_Er.disabled = False
+            self.ids.Pocked_Fe.disabled = False
+            self.ids.Pocked_Hargool.disabled = False
+            self.ids.Pocked_Largoo.disabled = False
+            self.ids.Pocked_Yharha.disabled = False
+            self.ids.Air.disabled = False
+            self.ids.Rune.disabled = False
+            self.ids.Deck_button.disabled = False
+            self.ids.Player_tokens.disabled = True
+
         else:
+            self.ids.Select_Er_Pocked_Card_Button.pos_hint = {'center_x': .5, 'y': .5}
             self.ids.Pocked_Er_Select.opacity = 1
+            self.ids.Rune.opacity = 0
+            self.ids.Air.opacity = 0
+
+            self.ids.Deck_button.disabled = True
+
+    def select_pocked_er(self):
+
+        print('Pocked Er')
+        self.ids.Select_Er_Pocked_Card_Button.pos_hint = {'x': 2, 'y': .5}
+        self.ids.Pocked_Er_Select.opacity = 0
+        self.ids.Opponent_unavailable.opacity = 1
+
+        self.ids.Pocked_Allgiz.disabled = True
+        self.ids.Pocked_Er.disabled = False
+        self.ids.Pocked_Fe.disabled = True
+        self.ids.Pocked_Hargool.disabled = True
+        self.ids.Pocked_Largoo.disabled = True
+        self.ids.Pocked_Yharha.disabled = True
+        self.ids.Air.disabled = True
+        self.ids.Rune.disabled = True
+        self.ids.Player_tokens.disabled = False
+
+    # Pocked Fe
 
     def pocked_fe_select(self, widget):
+
         if widget.state == 'normal':
+            self.ids.Select_Pocked_Fe_Card_Button.pos_hint = {'x': 2, 'y': .5}
             self.ids.Pocked_Fe_Select.opacity = 0
+            self.ids.Player_unavailable.opacity = 0
+            self.ids.Rune.opacity = 1
+            self.ids.Air.opacity = 1
+
+            self.ids.Pocked_Allgiz.disabled = False
+            self.ids.Pocked_Er.disabled = False
+            self.ids.Pocked_Fe.disabled = False
+            self.ids.Pocked_Hargool.disabled = False
+            self.ids.Pocked_Largoo.disabled = False
+            self.ids.Pocked_Yharha.disabled = False
+            self.ids.Air.disabled = False
+            self.ids.Rune.disabled = False
+            self.ids.Deck_button.disabled = False
+            self.ids.Opponent_tokens.disabled = True
+
         else:
+            self.ids.Select_Pocked_Fe_Card_Button.pos_hint = {'center_x': .5, 'y': .5}
             self.ids.Pocked_Fe_Select.opacity = 1
+            self.ids.Rune.opacity = 0
+            self.ids.Air.opacity = 0
+
+            self.ids.Deck_button.disabled = True
+
+    def select_pocked_fe(self):
+
+        print('Pocked Fe')
+        self.ids.Select_Pocked_Fe_Card_Button.pos_hint = {'x': 2, 'y': .5}
+        self.ids.Pocked_Fe_Select.opacity = 0
+        self.ids.Player_unavailable.opacity = 1
+
+        self.ids.Pocked_Allgiz.disabled = True
+        self.ids.Pocked_Er.disabled = True
+        self.ids.Pocked_Fe.disabled = False
+        self.ids.Pocked_Hargool.disabled = True
+        self.ids.Pocked_Largoo.disabled = True
+        self.ids.Pocked_Yharha.disabled = True
+        self.ids.Air.disabled = True
+        self.ids.Rune.disabled = True
+        self.ids.Opponent_tokens.disabled = False
+
+    # Pocked Hargool
+
+    def pocked_hargool_select(self, widget):
+
+        if widget.state == 'normal':
+            self.ids.Select_Pocked_Hargool_Card_Button.pos_hint = {'x': 2, 'y': .5}
+            self.ids.Pocked_Hargool_Select.opacity = 0
+            self.ids.Player_unavailable.opacity = 0
+            self.ids.Rune.opacity = 1
+            self.ids.Air.opacity = 1
+
+            self.ids.Pocked_Allgiz.disabled = False
+            self.ids.Pocked_Er.disabled = False
+            self.ids.Pocked_Fe.disabled = False
+            self.ids.Pocked_Hargool.disabled = False
+            self.ids.Pocked_Largoo.disabled = False
+            self.ids.Pocked_Yharha.disabled = False
+            self.ids.Air.disabled = False
+            self.ids.Rune.disabled = False
+            self.ids.Deck_button.disabled = False
+            self.ids.Opponent_tokens.disabled = True
+
+        else:
+            self.ids.Select_Pocked_Hargool_Card_Button.pos_hint = {'center_x': .5, 'y': .5}
+            self.ids.Pocked_Hargool_Select.opacity = 1
+            self.ids.Rune.opacity = 0
+            self.ids.Air.opacity = 0
+
+            self.ids.Deck_button.disabled = True
+
+    def select_pocked_hargool(self):
+
+        print('Pocked Hargool')
+        self.ids.Select_Pocked_Hargool_Card_Button.pos_hint = {'x': 2, 'y': .5}
+        self.ids.Pocked_Hargool_Select.opacity = 0
+        self.ids.Player_unavailable.opacity = 1
+
+        self.ids.Pocked_Allgiz.disabled = True
+        self.ids.Pocked_Er.disabled = True
+        self.ids.Pocked_Fe.disabled = True
+        self.ids.Pocked_Hargool.disabled = False
+        self.ids.Pocked_Largoo.disabled = True
+        self.ids.Pocked_Yharha.disabled = True
+        self.ids.Air.disabled = True
+        self.ids.Rune.disabled = True
+        self.ids.Opponent_tokens.disabled = False
+
+    # Pocked Largoo
 
     def pocked_largoo_select(self, widget):
+
         if widget.state == 'normal':
+            self.ids.Select_Pocked_Largoo_Card_Button.pos_hint = {'x': 2, 'y': .5}
             self.ids.Pocked_Largoo_Select.opacity = 0
+            self.ids.Opponent_unavailable.opacity = 0
+            self.ids.Rune.opacity = 1
+            self.ids.Air.opacity = 1
+
+            self.ids.Pocked_Allgiz.disabled = False
+            self.ids.Pocked_Er.disabled = False
+            self.ids.Pocked_Fe.disabled = False
+            self.ids.Pocked_Hargool.disabled = False
+            self.ids.Pocked_Largoo.disabled = False
+            self.ids.Pocked_Yharha.disabled = False
+            self.ids.Air.disabled = False
+            self.ids.Rune.disabled = False
+            self.ids.Deck_button.disabled = False
+            self.ids.Player_tokens.disabled = True
+
         else:
+            self.ids.Select_Pocked_Largoo_Card_Button.pos_hint = {'center_x': .5, 'y': .5}
             self.ids.Pocked_Largoo_Select.opacity = 1
+            self.ids.Rune.opacity = 0
+            self.ids.Air.opacity = 0
+
+            self.ids.Deck_button.disabled = True
+
+    def select_pocked_largoo(self):
+
+        print('Pocked Largoo')
+        self.ids.Select_Pocked_Largoo_Card_Button.pos_hint = {'x': 2, 'y': .5}
+        self.ids.Pocked_Largoo_Select.opacity = 0
+        self.ids.Opponent_unavailable.opacity = 1
+
+        self.ids.Pocked_Allgiz.disabled = True
+        self.ids.Pocked_Er.disabled = True
+        self.ids.Pocked_Fe.disabled = True
+        self.ids.Pocked_Hargool.disabled = True
+        self.ids.Pocked_Largoo.disabled = False
+        self.ids.Pocked_Yharha.disabled = True
+        self.ids.Air.disabled = True
+        self.ids.Rune.disabled = True
+        self.ids.Player_tokens.disabled = False
+
+    # Pocked Yharha
+
+    def pocked_yharha_select(self, widget):
+
+        if widget.state == 'normal':
+            self.ids.Select_Pocked_Yharha_Card_Button.pos_hint = {'x': 2, 'y': .5}
+            self.ids.Pocked_Yharha_Select.opacity = 0
+            self.ids.Player_unavailable.opacity = 0
+            self.ids.Rune.opacity = 1
+            self.ids.Air.opacity = 1
+
+            self.ids.Pocked_Allgiz.disabled = False
+            self.ids.Pocked_Er.disabled = False
+            self.ids.Pocked_Fe.disabled = False
+            self.ids.Pocked_Hargool.disabled = False
+            self.ids.Pocked_Largoo.disabled = False
+            self.ids.Pocked_Yharha.disabled = False
+            self.ids.Air.disabled = False
+            self.ids.Rune.disabled = False
+            self.ids.Deck_button.disabled = False
+            self.ids.Opponent_tokens.disabled = True
+
+        else:
+            self.ids.Select_Pocked_Yharha_Card_Button.pos_hint = {'center_x': .5, 'y': .5}
+            self.ids.Pocked_Yharha_Select.opacity = 1
+            self.ids.Rune.opacity = 0
+            self.ids.Air.opacity = 0
+
+            self.ids.Deck_button.disabled = True
+
+    def select_pocked_yharha(self):
+
+        print('Pocked Yharha')
+        self.ids.Select_Pocked_Yharha_Card_Button.pos_hint = {'x': 2, 'y': .5}
+        self.ids.Pocked_Yharha_Select.opacity = 0
+        self.ids.Player_unavailable.opacity = 1
+
+        self.ids.Pocked_Allgiz.disabled = True
+        self.ids.Pocked_Er.disabled = True
+        self.ids.Pocked_Fe.disabled = True
+        self.ids.Pocked_Hargool.disabled = True
+        self.ids.Pocked_Largoo.disabled = True
+        self.ids.Pocked_Yharha.disabled = False
+        self.ids.Air.disabled = True
+        self.ids.Rune.disabled = True
+        self.ids.Opponent_tokens.disabled = False
+
 
 
 class LobbyScreen(Screen):
@@ -616,7 +1057,6 @@ class LoadingScreen(Screen):
         self.sec = 0
         Clock.schedule_interval(self.update_time, 1)
 
-
     # AUTO_LOGIN
     def Just_Check(self):
         try:
@@ -670,9 +1110,9 @@ class LoadingScreen(Screen):
                 L.open()
                 Clock.unschedule(self.update_time)
     
-        elif self.sec >=8:# and self.AUTO_LOG == True:
+        elif self.sec >=8:  # and self.AUTO_LOG == True:
             print("AUTO_LOGGIN_FAILED")
-            #self.FM.write_file("SOCKET_DATA/OUT_BOUND.txt", "ONLINE", "w")
+            # self.FM.write_file("SOCKET_DATA/OUT_BOUND.txt", "ONLINE", "w")
             MDApp.get_running_app().root.current = 'home'
             try:
                 L = Login()
@@ -682,9 +1122,9 @@ class LoadingScreen(Screen):
                 print("POPUP_ERROR:: ", str(L))
 
 
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# ---------------------------------------------------------------
 # MAIN
-# ********************************************************
+# ---------------------------------------------------------------
 
 
 class WindowManager(ScreenManager):
@@ -698,7 +1138,7 @@ class MyMDApp(MDApp):
         self.FM = File_man()
         self.conn = connections()
 
-        #CLEAR FILES
+        # CLEAR FILES
         self.FM.write_file("SOCKET_DATA/GAME.txt", "", "*", "w")
         self.FM.write_file("SOCKET_DATA/SERVER.txt", "", "*", "w")
         self.FM.write_file("SOCKET_DATA/ADS_BANK.txt", "", "*", "w")
@@ -707,9 +1147,8 @@ class MyMDApp(MDApp):
         self.FM.write_file("SOCKET_DATA/OUT_BOUND.txt", "", "*", "w")
         self.FM.write_file("SOCKET_DATA/IN_BOUND.txt", "", "*", "w")
 
-        #OPEN CONNS
+        # OPEN CONNS
         self.connections__()
-
 
     def connections__(self):
         try:
@@ -727,14 +1166,13 @@ class MyMDApp(MDApp):
             print("\n\n!!INIT_CONNECTION_ERROR!!\n\n", str(e))
             raise SystemExit(1)
 
-
-        #self.sound_home = SoundLoader.load('Sound/HomeMusic.wav')
-        #self.sound_home.volume = .1
+        # self.sound_home = SoundLoader.load('Sound/HomeMusic.wav')
+        # self.sound_home.volume = .1
 
     def build(self):
         Builder.load_file("NoS.kv")
 
-        #if self.sound_home:
+        # if self.sound_home:
         #   self.sound_home.play()
 
         return WindowManager()
