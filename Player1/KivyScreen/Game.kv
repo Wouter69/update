@@ -1,0 +1,1350 @@
+
+<GameScreen>:
+    name: 'game'
+    FloatLayout:
+        id: Game_Screen_layout
+        canvas.before:
+            Rectangle:
+                source: 'ASSETS/back/GameB.jpg'
+                size: self.size
+                pos: self.pos
+
+        # -------------------------------------------------------
+        # Opponent
+        # -------------------------------------------------------
+
+        FloatLayout:
+            id: Opponent
+            allow_stretch: False
+            keep_ratio: True
+            size_hint: 1, 1
+            pos_hint: {'center_x': .5, 'y': 0}
+
+            Image:
+                id: Opponent_Icon
+                source: "ASSETS/Opponent/AquariusM.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: .895, .34
+                pos_hint: {'center_x': .5, 'y': .65}
+
+            Image:
+                id: Opponent_Board
+                source: 'ASSETS/Opponent/Opponent_board.png'
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: .895, .34
+                pos_hint: {'center_x': .5, 'y': .65}
+
+            Label:
+                id: Opponent_Timer
+                text: '00'
+                color: 1,1,1,1
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                font_size: sp(14)
+                size_hint: .2, .2
+                pos_hint: {'x': .25, 'y': .78}
+
+            Label:
+                id: Opponent_name
+                text: 'Opponent name'
+                color: 1,1,1,1
+                font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+                font_size: sp(13)
+                size_hint: .890, .2
+                pos_hint: {'center_x': .65, 'y': .7525}
+
+            BoxLayout:
+                id: Opponent_tokens
+                disabled: True
+                size_hint: .845, .1635
+                pos_hint: {'center_x': .5, 'y': .6645}
+
+                ScrollView:
+                    StackLayout:
+                        size_hint: 1, None
+                        height: self.minimum_height
+                        spacing: dp(5), dp(5)
+                        padding: (dp(5),dp(5),dp(5),dp(5))
+
+                        ToggleButton:
+                            id: Player_Field
+                            border: 0,0,0,0
+                            background_normal: 'ASSETS/Game_tokens/Air_token_normal.png'
+                            background_down: 'ASSETS/Game_tokens/Air_token_down.png'
+                            background_disabled_normal: 'ASSETS/Game_tokens/Air_token_normal.png'
+                            group: 'one'
+                            size_hint: None, None
+                            width: dp(40)
+                            height: dp(40)
+
+                        ToggleButton:
+                            id: Player_Field
+                            border: 0,0,0,0
+                            background_normal: 'ASSETS/Game_tokens/Air_token_protect1.png'
+                            background_down: 'ASSETS/Game_tokens/Air_token_down.png'
+                            background_disabled_normal: 'ASSETS/Game_tokens/Air_token_protect1.png'
+                            group: 'one'
+                            size_hint: None, None
+                            width: dp(40)
+                            height: dp(40)
+
+                        ToggleButton:
+                            id: Player_Field
+                            border: 0,0,0,0
+                            background_normal: 'ASSETS/Game_tokens/Air_token_protect2.png'
+                            background_down: 'ASSETS/Game_tokens/Air_token_down.png'
+                            background_disabled_normal: 'ASSETS/Game_tokens/Air_token_protect2.png'
+                            group: 'one'
+                            size_hint: None, None
+                            width: dp(40)
+                            height: dp(40)
+
+                        ToggleButton:
+                            id: Player_Field
+                            border: 0,0,0,0
+                            background_normal: 'ASSETS/Game_tokens/Blank.png'
+                            background_down: 'ASSETS/Game_tokens/Blank.png'
+                            background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                            group: 'one'
+                            size_hint: None, None
+                            width: dp(40)
+                            height: dp(40)
+
+                        ToggleButton:
+                            id: Player_Field
+                            border: 0,0,0,0
+                            background_normal: 'ASSETS/Game_tokens/Blank.png'
+                            background_down: 'ASSETS/Game_tokens/Blank.png'
+                            background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                            group: 'one'
+                            size_hint: None, None
+                            width: dp(40)
+                            height: dp(40)
+
+                        ToggleButton:
+                            id: Player_Field
+                            border: 0,0,0,0
+                            background_normal: 'ASSETS/Game_tokens/Blank.png'
+                            background_down: 'ASSETS/Game_tokens/Blank.png'
+                            background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                            group: 'one'
+                            size_hint: None, None
+                            width: dp(40)
+                            height: dp(40)
+
+                        ToggleButton:
+                            id: Player_Field
+                            border: 0,0,0,0
+                            background_normal: 'ASSETS/Game_tokens/Blank.png'
+                            background_down: 'ASSETS/Game_tokens/Blank.png'
+                            background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                            group: 'one'
+                            size_hint: None, None
+                            width: dp(40)
+                            height: dp(40)
+
+                        ToggleButton:
+                            id: Player_Field
+                            border: 0,0,0,0
+                            background_normal: 'ASSETS/Game_tokens/Blank.png'
+                            background_down: 'ASSETS/Game_tokens/Blank.png'
+                            background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                            group: 'one'
+                            size_hint: None, None
+                            width: dp(40)
+                            height: dp(40)
+
+                        ToggleButton:
+                            id: Player_Field
+                            border: 0,0,0,0
+                            background_normal: 'ASSETS/Game_tokens/Blank.png'
+                            background_down: 'ASSETS/Game_tokens/Blank.png'
+                            background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                            group: 'one'
+                            size_hint: None, None
+                            width: dp(40)
+                            height: dp(40)
+
+                        ToggleButton:
+                            id: Player_Field
+                            border: 0,0,0,0
+                            background_normal: 'ASSETS/Game_tokens/Blank.png'
+                            background_down: 'ASSETS/Game_tokens/Blank.png'
+                            background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                            group: 'one'
+                            size_hint: None, None
+                            width: dp(40)
+                            height: dp(40)
+
+                        ToggleButton:
+                            id: Player_Field
+                            border: 0,0,0,0
+                            background_normal: 'ASSETS/Game_tokens/Blank.png'
+                            background_down: 'ASSETS/Game_tokens/Blank.png'
+                            background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                            group: 'one'
+                            size_hint: None, None
+                            width: dp(40)
+                            height: dp(40)
+
+                        ToggleButton:
+                            id: Player_Field
+                            border: 0,0,0,0
+                            background_normal: 'ASSETS/Game_tokens/Blank.png'
+                            background_down: 'ASSETS/Game_tokens/Blank.png'
+                            background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                            group: 'one'
+                            size_hint: None, None
+                            width: dp(40)
+                            height: dp(40)
+
+                        ToggleButton:
+                            id: Player_Field
+                            border: 0,0,0,0
+                            background_normal: 'ASSETS/Game_tokens/Blank.png'
+                            background_down: 'ASSETS/Game_tokens/Blank.png'
+                            background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                            group: 'one'
+                            size_hint: None, None
+                            width: dp(40)
+                            height: dp(40)
+
+                        ToggleButton:
+                            id: Player_Field
+                            border: 0,0,0,0
+                            background_normal: 'ASSETS/Game_tokens/Blank.png'
+                            background_down: 'ASSETS/Game_tokens/Blank.png'
+                            background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                            group: 'one'
+                            size_hint: None, None
+                            width: dp(40)
+                            height: dp(40)
+
+                        ToggleButton:
+                            id: Player_Field
+                            border: 0,0,0,0
+                            background_normal: 'ASSETS/Game_tokens/Blank.png'
+                            background_down: 'ASSETS/Game_tokens/Blank.png'
+                            background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                            group: 'one'
+                            size_hint: None, None
+                            width: dp(40)
+                            height: dp(40)
+
+        # -------------------------------------------------------
+        # Player
+        # -------------------------------------------------------
+
+        Image:
+            id: Player_Icon
+            source: "ASSETS/PlayerIcon/CapricornM.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: .28, .15
+            pos_hint: {'x': .64, 'y': .312}
+
+        Image:
+            id: Player_Board
+            source: 'ASSETS/PlayerIcon/Player_board.png'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: .895, .34
+            pos_hint: {'center_x': .5, 'y': .305}
+
+        Label:
+            id: Player_Timer
+            text: '60'
+            color: 1,1,1,1
+            font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+            font_size: sp(14)
+            size_hint: .2, .2
+            pos_hint: {'x': .55, 'y': .3125}
+
+        Label:
+            id: Player_name
+            text: 'Player name'
+            color: 1,1,1,1
+            font_name: "ASSETS/font/CelticGaramondthe2nd.TTF"
+            font_size: sp(13)
+            size_hint: .890, .2
+            pos_hint: {'center_x': .35, 'y': .3475}
+
+        BoxLayout:
+            id: Player_tokens
+            disabled: True
+            size_hint: .845, .1635
+            pos_hint: {'center_x': .5, 'y': .466}
+
+            ScrollView:
+                StackLayout:
+                    size_hint: 1, None
+                    height: self.minimum_height
+                    spacing: dp(5), dp(5)
+                    padding: (dp(5),dp(5),dp(0),dp(5))
+
+                    ToggleButton:
+                        id: Player_Field
+                        border: 0,0,0,0
+                        background_normal: 'ASSETS/Game_tokens/Air_token_normal.png'
+                        background_down: 'ASSETS/Game_tokens/Air_token_down.png'
+                        background_disabled_normal: 'ASSETS/Game_tokens/Air_token_normal.png'
+                        group: 'one'
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    ToggleButton:
+                        id: Player_Field
+                        border: 0,0,0,0
+                        background_normal: 'ASSETS/Game_tokens/Air_token_protect1.png'
+                        background_down: 'ASSETS/Game_tokens/Air_token_down.png'
+                        background_disabled_normal: 'ASSETS/Game_tokens/Air_token_protect1.png'
+                        group: 'one'
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    ToggleButton:
+                        id: Player_Field
+                        border: 0,0,0,0
+                        background_normal: 'ASSETS/Game_tokens/Air_token_protect2.png'
+                        background_down: 'ASSETS/Game_tokens/Air_token_down.png'
+                        background_disabled_normal: 'ASSETS/Game_tokens/Air_token_protect2.png'
+                        group: 'one'
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    ToggleButton:
+                        id: Player_Field
+                        border: 0,0,0,0
+                        background_normal: 'ASSETS/Game_tokens/Blank.png'
+                        background_down: 'ASSETS/Game_tokens/Blank.png'
+                        background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                        group: 'one'
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    ToggleButton:
+                        id: Player_Field
+                        border: 0,0,0,0
+                        background_normal: 'ASSETS/Game_tokens/Blank.png'
+                        background_down: 'ASSETS/Game_tokens/Blank.png'
+                        background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                        group: 'one'
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    ToggleButton:
+                        id: Player_Field
+                        border: 0,0,0,0
+                        background_normal: 'ASSETS/Game_tokens/Blank.png'
+                        background_down: 'ASSETS/Game_tokens/Blank.png'
+                        background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                        group: 'one'
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    ToggleButton:
+                        id: Player_Field
+                        border: 0,0,0,0
+                        background_normal: 'ASSETS/Game_tokens/Blank.png'
+                        background_down: 'ASSETS/Game_tokens/Blank.png'
+                        background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                        group: 'one'
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    ToggleButton:
+                        id: Player_Field
+                        border: 0,0,0,0
+                        background_normal: 'ASSETS/Game_tokens/Blank.png'
+                        background_down: 'ASSETS/Game_tokens/Blank.png'
+                        background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                        group: 'one'
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    ToggleButton:
+                        id: Player_Field
+                        border: 0,0,0,0
+                        background_normal: 'ASSETS/Game_tokens/Blank.png'
+                        background_down: 'ASSETS/Game_tokens/Blank.png'
+                        background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                        group: 'one'
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    ToggleButton:
+                        id: Player_Field
+                        border: 0,0,0,0
+                        background_normal: 'ASSETS/Game_tokens/Blank.png'
+                        background_down: 'ASSETS/Game_tokens/Blank.png'
+                        background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                        group: 'one'
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    ToggleButton:
+                        id: Player_Field
+                        border: 0,0,0,0
+                        background_normal: 'ASSETS/Game_tokens/Blank.png'
+                        background_down: 'ASSETS/Game_tokens/Blank.png'
+                        background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                        group: 'one'
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    ToggleButton:
+                        id: Player_Field
+                        border: 0,0,0,0
+                        background_normal: 'ASSETS/Game_tokens/Blank.png'
+                        background_down: 'ASSETS/Game_tokens/Blank.png'
+                        background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                        group: 'one'
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    ToggleButton:
+                        id: Player_Field
+                        border: 0,0,0,0
+                        background_normal: 'ASSETS/Game_tokens/Blank.png'
+                        background_down: 'ASSETS/Game_tokens/Blank.png'
+                        background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                        group: 'one'
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    ToggleButton:
+                        id: Player_Field
+                        border: 0,0,0,0
+                        background_normal: 'ASSETS/Game_tokens/Blank.png'
+                        background_down: 'ASSETS/Game_tokens/Blank.png'
+                        background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                        group: 'one'
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+                    ToggleButton:
+                        id: Player_Field
+                        border: 0,0,0,0
+                        background_normal: 'ASSETS/Game_tokens/Blank.png'
+                        background_down: 'ASSETS/Game_tokens/Blank.png'
+                        background_disabled_normal: 'ASSETS/Game_tokens/Blank.png'
+                        group: 'one'
+                        size_hint: None, None
+                        width: dp(40)
+                        height: dp(40)
+
+        # -------------------------------------------------------
+        # Deck
+        # -------------------------------------------------------
+
+        Button:
+            id: Deck_button
+            disabled: False
+            border: 0,0,0,0
+            allow_stretch: True
+            keep_ratio: True
+            background_normal: 'ASSETS/FTCard/CB_FTree_normal.png'
+            background_down: 'ASSETS/FTCard/CB_FTree_down.png'
+            background_disabled_normal: 'ASSETS/FTCard/CB_FTree_normal.png'
+            size_hint: .185, .14
+            pos_hint: {'x': .15, 'y': .28}
+
+            # on_press:
+
+            on_release:
+                root.deck_button(self)
+
+        Image:
+            id: Discard
+            source: 'ASSETS/back/Card_Holder.png'
+            background_color: 0,0,0,0
+            allow_stretch: True
+            keep_ratio: True
+            size_hint: .185, .14
+            pos_hint: {'x': .35, 'y': .28}
+
+        # -------------------------------------------------------
+        # Hand
+        # -------------------------------------------------------
+
+        TabbedPanel:
+            do_default_tab: False
+            background_image: 'ASSETS/Card_board/Card_board.png'
+            strip_border: [10,10,10,10]
+            border:(0,0,0,0)
+            tab_height: dp(30)
+            tab_width: dp(40)
+            tab_pos: 'top_right'
+            size_hint: .895, .26
+            pos_hint: {'center_x': .5, 'y': .01}
+
+            # -------------------------------------------------------
+            # Tree
+            # -------------------------------------------------------
+
+            TabbedPanelItem:
+                id: Air
+                disabled: False
+                opacity: 1
+
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Card_board/Air_tab_normal.png'
+                background_down: 'ASSETS/Card_board/Air_tab_down.png'
+                background_disabled_normal: 'ASSETS/back/Card_Holder1.png'
+
+                BoxLayout:
+                    id: Air_Field
+                    background_color: 0,0,0,0
+
+                    ScrollView:
+                        do_scroll_X: True
+                        do_scroll_y: False
+                        StackLayout:
+                            size_hint: 2, None
+                            height: self.minimum_height
+                            spacing: dp(5), dp(5)
+                            padding: (dp(5),dp(5),dp(5),dp(5))
+
+                            ToggleButton:
+                                id: FTree1
+                                disabled: False
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/FTCard/FTree1_normal.png'
+                                background_down: 'ASSETS/FTCard/FTree1_down.png'
+                                background_disabled_normal: 'ASSETS/back/Card_Holder1.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.ftree1_select(self)
+
+
+                            ToggleButton:
+                                id: FTree2
+                                disabled: False
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/FTCard/FTree2_normal.png'
+                                background_down: 'ASSETS/FTCard/FTree2_down.png'
+                                background_disabled_normal: 'ASSETS/back/Card_Holder1.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.ftree2_select(self)
+
+                            ToggleButton:
+                                id: FTree3
+                                disabled: False
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/FTCard/FTree3_normal.png'
+                                background_down: 'ASSETS/FTCard/FTree3_down.png'
+                                background_disabled_normal: 'ASSETS/back/Card_Holder1.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.ftree3_select(self)
+
+                            ToggleButton:
+                                id: FTreeC
+                                disabled: False
+                                group: 'pick one'
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/FTCard/FTreeC_normal.png'
+                                background_down: 'ASSETS/FTCard/FTreeC_down.png'
+                                background_disabled_normal: 'ASSETS/back/Card_Holder1.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.ftree_c_select(self)
+
+                            ToggleButton:
+                                id: FTreeJ
+                                disabled: False
+                                group: 'pick one'
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/FTCard/FTreeJ_normal.png'
+                                background_down: 'ASSETS/FTCard/FTreeJ_down.png'
+                                background_disabled_normal: 'ASSETS/back/Card_Holder1.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.ftree_j_select(self)
+
+            # -------------------------------------------------------
+            # OX
+            # -------------------------------------------------------
+
+            # TabbedPanelItem:
+            #    id: Earth
+            #    border: 0,0,0,0
+            #    background_normal:
+            #    background_down:
+
+            # -------------------------------------------------------
+            # Man
+            # -------------------------------------------------------
+
+            # TabbedPanelItem:
+            #    id: Water
+            #    border: 0,0,0,0
+            #    background_normal:
+            #    background_down:
+
+            # -------------------------------------------------------
+            # Ram
+            # -------------------------------------------------------
+
+            # TabbedPanelItem:
+            #    id: Fire
+            #    border: 0,0,0,0
+            #    background_normal:
+            #    background_down:
+
+            # -------------------------------------------------------
+            # Rune
+            # -------------------------------------------------------
+
+            TabbedPanelItem:
+                id: Rune
+                disabled: False
+                opacity: 1
+
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Card_board/Rune_tab_normal.png'
+                background_down: 'ASSETS/Card_board/Rune_tab_down.png'
+                background_disabled_normal: 'ASSETS/back/Card_Holder1.png'
+
+                BoxLayout:
+                    id: Rune_Field
+                    background_color: 0,0,0,0
+
+                    ScrollView:
+                        do_scroll_X: True
+                        do_scroll_y: False
+                        StackLayout:
+                            size_hint: 1, None
+                            height: self.minimum_height
+                            spacing: dp(5), dp(5)
+                            padding: (dp(5),dp(5),dp(5),dp(5))
+
+                            ToggleButton:
+                                id: FTree_Allgiz
+                                disabled: False
+                                group: 'pick one'
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/FTCard/FTree_Allgiz_normal.png'
+                                background_down: 'ASSETS/FTCard/FTree_Allgiz_down.png'
+                                background_disabled_normal: 'ASSETS/back/Card_Holder1.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.ftree_allgiz_select(self)
+
+                            ToggleButton:
+                                id: FTree_Hargool
+                                disabled: False
+                                group: 'pick one'
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/FTCard/FTree_Hargool_normal.png'
+                                background_down: 'ASSETS/FTCard/FTree_Hargool_down.png'
+                                background_disabled_normal: 'ASSETS/back/Card_Holder1.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.ftree_hargool_select(self)
+
+                            ToggleButton:
+                                id: FTree_Yharha
+                                disabled: False
+                                group: 'pick one'
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/FTCard/FTree_Yharha_normal.png'
+                                background_down: 'ASSETS/FTCard/FTree_Yharha_down.png'
+                                background_disabled_normal: 'ASSETS/back/Card_Holder1.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.ftree_yharha_select(self)
+
+            # -------------------------------------------------------
+            # Pocked
+            # -------------------------------------------------------
+
+            TabbedPanelItem:
+                id: Pocked
+                disabled: False
+                opacity: 1
+
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Card_board/Pocked_tab_normal.png'
+                background_down: 'ASSETS/Card_board/Pocked_tab_down.png'
+                background_disabled_normal: 'ASSETS/back/Card_Holder1.png'
+
+                BoxLayout:
+                    id: Pocked_Field
+                    background_color: 0,0,0,0
+
+                    ScrollView:
+                        do_scroll_X: True
+                        do_scroll_y: False
+                        StackLayout:
+                            size_hint: 2, None
+                            height: self.minimum_height
+                            spacing: dp(5), dp(5)
+                            padding: (dp(5),dp(5),dp(5),dp(5))
+
+                            ToggleButton:
+                                id: Pocked_Allgiz
+                                disabled: False
+                                group: 'pick one'
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/PCard/Pocked_Allgiz_normal.png'
+                                background_down: 'ASSETS/PCard/Pocked_Allgiz_down.png'
+                                background_disabled_normal: 'ASSETS/back/Card_Holder1.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.pocked_allgiz_select(self)
+
+                            ToggleButton:
+                                id: Pocked_Er
+                                disabled: False
+                                group: 'pick one'
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/PCard/Pocked_Er_normal.png'
+                                background_down: 'ASSETS/PCard/Pocked_Er_down.png'
+                                background_disabled_normal: 'ASSETS/back/Card_Holder1.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.pocked_er_select(self)
+
+                            ToggleButton:
+                                id: Pocked_Fe
+                                disabled: False
+                                group: 'pick one'
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/PCard/Pocked_Fe_normal.png'
+                                background_down: 'ASSETS/PCard/Pocked_Fe_down.png'
+                                background_disabled_normal: 'ASSETS/back/Card_Holder1.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.pocked_fe_select(self)
+
+                            ToggleButton:
+                                id: Pocked_Hargool
+                                disabled: False
+                                group: 'pick one'
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/PCard/Pocked_Hargool_normal.png'
+                                background_down: 'ASSETS/PCard/Pocked_Hargool_down.png'
+                                background_disabled_normal: 'ASSETS/back/Card_Holder1.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.pocked_hargool_select(self)
+
+                            ToggleButton:
+                                id: Pocked_Largoo
+                                disabled: False
+                                group: 'pick one'
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/PCard/Pocked_Largoo_normal.png'
+                                background_down: 'ASSETS/PCard/Pocked_Largoo_down.png'
+                                background_disabled_normal: 'ASSETS/back/Card_Holder1.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.pocked_largoo_select(self)
+
+                            ToggleButton:
+                                id: Pocked_Yharha
+                                disabled: False
+                                group: 'pick one'
+                                border: 0,0,0,0
+                                background_normal: 'ASSETS/PCard/Pocked_Yharha_normal.png'
+                                background_down: 'ASSETS/PCard/Pocked_Yharha_down.png'
+                                background_disabled_normal: 'ASSETS/back/Card_Holder1.png'
+                                size_hint: None, None
+                                width: dp(78)
+                                height: dp(100)
+
+                                on_state:
+                                    root.pocked_yharha_select(self)
+
+        # -------------------------------------------------------
+        # Card Selection
+        # -------------------------------------------------------
+
+        Image:
+            id: Opponent_unavailable
+            opacity: 0
+            source: "ASSETS/back/Unavailable.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: .847, .166
+            pos_hint: {'center_x': .5, 'y': .6645}
+
+        Image:
+            id: Player_unavailable
+            opacity: 0
+            source: "ASSETS/back/Unavailable.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: .847, .166
+            pos_hint: {'center_x': .5, 'y': .465}
+
+        # -------------------------------------------------------
+        # Creation Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: FTreeC_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 1
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                id: FTreeC_Image
+                source: "ASSETS/FTCard/FTreeC_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Creation_Card_Button
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'x': 2, 'y': .5}
+
+                on_press:
+                    root.select_ftree_creation()
+
+        # -------------------------------------------------------
+        # Joker Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: FTreeJ_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                id: FTreeJ_Image
+                source: "ASSETS/FTCard/FTreeJ_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Jocker_Card_Button
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'x': 2, 'y': .5}
+
+                on_press:
+                    root.select_ftree_jocker()
+
+        # -------------------------------------------------------
+        # Allgiz Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: FTree_Allgiz_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                id: FTree_Allgiz_Image
+                source: "ASSETS/FTCard/FTree_Allgiz_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Allgiz_Card_Button
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'x': 2, 'y': .5}
+
+                on_press:
+                    root.select_rune_allgiz()
+
+        # -------------------------------------------------------
+        # Hargool Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: FTree_Hargool_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                id: FTree_Hargool_Image
+                source: "ASSETS/FTCard/FTree_Hargool_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Hargool_Card_Button
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'x': 2, 'y': .5}
+
+                on_press:
+                    root.select_rune_hargool()
+
+        # -------------------------------------------------------
+        # Yharha Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: FTree_Yharha_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                id: FTree_Yharha_Image
+                source: "ASSETS/FTCard/FTree_Yharha_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Yharha_Card_Button
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'x': 2, 'y': .5}
+
+                on_press:
+                    root.select_rune_yharha()
+
+        # -------------------------------------------------------
+        # Pocked Allgiz Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: Pocked_Allgiz_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                id: Pocket_Allgiz_Image
+                source: "ASSETS/PCard/Pocked_Allgiz_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Allgiz_Pocked_Card_Button
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'x': 2, 'y': .5}
+
+                on_press:
+                    root.select_pocked_allgiz()
+
+        # -------------------------------------------------------
+        # Pocked Er Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: Pocked_Er_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                id: Pocket_Er_Image
+                source: "ASSETS/PCard/Pocked_Er_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Er_Pocked_Card_Button
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'x': 2, 'y': .5}
+
+                on_press:
+                    root.select_pocked_er()
+
+        # -------------------------------------------------------
+        # Pocked Fe Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: Pocked_Fe_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                id: Pocket_Fe_Image
+                source: "ASSETS/PCard/Pocked_Fe_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Pocked_Fe_Card_Button
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'x': 2, 'y': .5}
+
+                on_press:
+                    root.select_pocked_fe()
+
+        # -------------------------------------------------------
+        # Pocked Hargool Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: Pocked_Hargool_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                id: Pocket_Hargool_Image
+                source: "ASSETS/PCard/Pocked_Hargool_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Pocked_Hargool_Card_Button
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'x': 2, 'y': .5}
+
+                on_press:
+                    root.select_pocked_hargool()
+
+        # -------------------------------------------------------
+        # Pocked Largoo Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: Pocked_Largoo_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                id: Pocket_Largoo_Image
+                source: "ASSETS/PCard/Pocked_Largoo_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Pocked_Largoo_Card_Button
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'x': 2, 'y': .5}
+
+                on_press:
+                    root.select_pocked_largoo()
+
+        # -------------------------------------------------------
+        # Pocked Yharha Card
+        # -------------------------------------------------------
+
+        BoxLayout:
+            id: Pocked_Yharha_Select
+            canvas.before:
+                Rectangle:
+                    source: "ASSETS/back/Card_Holder1.png"
+                    size: self.size
+                    pos: self.pos
+            opacity: 0
+            orientation: "vertical"
+            size_hint: 1, None
+            height: dp(326)
+            pos_hint: {'center_x': .5, 'center_y': .572}
+            spacing: dp(32)
+            padding: dp(20), dp(20), dp(20), dp(20)
+
+            Image:
+                id: Pocket_Yharha_Image
+                source: "ASSETS/PCard/Pocked_Yharha_normal.png"
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: None, None
+                width: dp(155)
+                height: dp(200)
+                pos_hint: {'center_x': .5, 'y': 0}
+
+            Button:
+                id: Select_Pocked_Yharha_Card_Button
+                border: 0,0,0,0
+                background_normal: 'ASSETS/Buttons/OnPlayCard.png'
+                background_down: 'ASSETS/Buttons/OffPlayCard.png'
+                size_hint: None, None
+                width: dp(200)
+                height: dp(50)
+                pos_hint: {'x': 2, 'y': .5}
+
+                on_press:
+                    root.select_pocked_yharha()
+
+        # -------------------------------------------------------
+        # Creation top, middle, bottoms Card
+        # -------------------------------------------------------
+
+        Image:
+            id: Select_Background
+            opacity: 0
+            source: "ASSETS/back/Card_Holder.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 1, None
+            height: dp(325)
+            pos_hint: {'x': 0, 'center_y': .578}
+
+        Image:
+            id: FTree1_Image
+            opacity: 0
+            source: "ASSETS/FTCard/FTree1_normal.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: None, None
+            width: dp(155)
+            height: dp(200)
+            pos_hint: {'center_x': .30, 'center_y': .648}
+
+        Image:
+            id: FTree2_Image
+            opacity: 0
+            source: "ASSETS/FTCard/FTree2_normal.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: None, None
+            width: dp(155)
+            height: dp(200)
+            pos_hint: {'center_x': .5, 'center_y': .648}
+
+        Image:
+            id: FTree3_Image
+            opacity: 0
+            source: "ASSETS/FTCard/FTree3_normal.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: None, None
+            width: dp(155)
+            height: dp(200)
+            pos_hint: {'center_x': .70, 'center_y': .648}
+
+
+
+
+
+
