@@ -1,27 +1,24 @@
 
-# ---------------------------------------------------------------
-# ToDo:
-# ---------------------------------------------------------------
-
-# PROFILE UPDATER ->
-#                   LOGIN <<- LOAD FULL PROFILE:: SERVER<<
-#                   WELCOME_POPUP: REFRESH UPDATE
-#                   HOME_SCREEN: REFRESH UPDATE
-#                   RANKED_LIST: CURRENT_LEVEL
-
-# AUDIO CONTROLS
-# REPORT LOGGING
-
-# RANKED LISTS ->
-#                   USE SAND_BOX_METHOD
-#                   UPDATE:
-#                           *GLOBAL->(MAKE LIST ON SERVER)
-#                           *LOCAL ->(CHECK FOR MATCHING COUNTRIES)
-
-#       THEN::
-
-# LOBBY ->
-# GAME_SCREEN -> "Functions_ToDo"
+##ToDo:
+    # PROFILE UPDATER ->   {
+    #                       LOGIN <<- LOAD FULL PROFILE:: SERVER<<
+    #                       WELCOME_POPUP: REFRESH UPDATE
+    #                       HOME_SCREEN: REFRESH UPDATE
+    #                       RANKED_LIST: CURRENT_LEVEL
+    #                       }
+    # AUDIO CONTROLS
+    # REPORT LOGGING
+    # RANKED LISTS ->      {
+    #                       USE SAND_BOX_METHOD
+    #                       UPDATE: 
+    #                           *GLOBAL->(MAKE LIST ON SERVER)  
+    #                           *LOCAL ->(CHECK FOR MATCHING COUNTRIES)
+    #                       }
+    # 
+    #       THEN::
+    # 
+    # LOBBY -> 
+    # GAME_SCREEN -> "FUCKTONS_ToDo"
 
 
 # LIB REQUIRED IMPORTS
@@ -72,9 +69,12 @@ Window.size = (300, 550)
 
 Config.set('graphics', 'resizable', True)
 
-# ---------------------------------------------------------------
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # POPUPS
-# ---------------------------------------------------------------
+# ********************************************************
+
+
+lobb = False
 
 
 class ReportC(Popup):
@@ -103,8 +103,8 @@ class Setting(Popup):
         Setting().dismiss()
 
     def sound_state_off(self):
-        # GET FILE DATA [SETTING.txt]
-        # UPDATE
+        #GET FILE DATA [SETTING.txt]
+        #UPDATE
         audio_state = self.FM.read_file("SETTINGS_STATE/SETTINGS.txt", "*")
         for _ in audio_state:
             print(str(_))
@@ -113,23 +113,24 @@ class Setting(Popup):
         pass
 
     def sound_state_on(self):
-        # GET FILE DATA [SETTING.txt]
-        # UPDATE
+        #GET FILE DATA [SETTING.txt]
+        #UPDATE
         pass
 
     def music_state_off(self):
-        # GET FILE DATA [SETTING.txt]
-        # UPDATE
+        #GET FILE DATA [SETTING.txt]
+        #UPDATE
         pass
 
     def music_state_on(self):
-        # GET FILE DATA [SETTING.txt]
-        # UPDATE
+        #GET FILE DATA [SETTING.txt]
+        #UPDATE
         pass
+
 
     # GRAPHIC THINGS
     def on_sound_toggle_button_state(self, widget):
-        # WRITE TO SETTINGS FILE AND UPDATE ON ALL SCREENS AND POPUPS
+        #WRITE TO SETTINGS FILE AND UPDATE ON ALL SCREENS AND POPUPS
         if widget.state == "normal":
             widget.text = 'on'
             self.sound_state_on()
@@ -138,7 +139,7 @@ class Setting(Popup):
             self.sound_state_off()
 
     def on_music_toggle_button_state(self, widget):
-        # WRITE TO SETTINGS FILE AND UPDATE ON ALL SCREENS AND POPUPS
+        #WRITE TO SETTINGS FILE AND UPDATE ON ALL SCREENS AND POPUPS
         if widget.state == "normal":
             widget.text = 'on'
         else:
@@ -215,9 +216,9 @@ class Register(Popup):
                 if day >= 20 or day <= 18:  # JANUARY
                     return "Capricorn"
             elif 1 <= month <= 2:  # JANUARY
-                if day >= 19 or day <= 18:  # FEBRUARY
+                if day >= 19 or day <= 18:  # FEBUARY
                     return "Aquarius"
-            elif 2 <= month <= 3:  # FEBRUARY
+            elif 2 <= month <= 3:  # FEBUARY
                 if day >= 19 or day <= 20:  # MARCH
                     return "Pisces"
         except Exception as e:
@@ -231,7 +232,7 @@ class Register(Popup):
         name = str(self.ids['Name'].text)
         print("NAME", str(name))
 
-        # DATA_CAPTURE
+        #DATA_CAPTURE
         day = str(self.ids['Birth_DAY'].text)
         month = str(self.ids['Birth_MONTH'].text)
         year = str(self.ids['Birth_YEAR'].text)
@@ -246,7 +247,7 @@ class Register(Popup):
         e_mail = str(self.ids['input_RegMail'].text)
         print("EMAIL:: ", str(e_mail))
 
-        # DATA_ENCAP >> REGISTERATION
+        #DATA_ENCAP >> REGISTERATION
         player_data = "REG*"+name+"*"+date+"*"+country+"*"+e_mail+"*"+gender+"*"+icon
         player_profile = "PROFILE*"+name+"*"+date+"*"+country+"*"+e_mail+"*"+gender+"*"+icon
         self.FM.write_file("SOCKET_DATA/OUT_BOUND.txt", player_data, "*", "w")
@@ -330,17 +331,129 @@ class Welcome(Popup):
             self.ids['WelcomeName'].text = str(user)
 
 
-# ---------------------------------------------------------------
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # SCREENS
-# ---------------------------------------------------------------
+# ********************************************************
+
+
+class TABS(TabbedPanel):
+    pass
+
+
+class Recycle(ScrollView):
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        pass
+
+    def card(self):
+        print("TOUCHED")
+
+
+class RecycleOne(ScrollView):
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        pass
+
+    def card(self):
+        print("TOUCHED")
+
+
+class RecycleTwo(ScrollView):
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        pass
+    def card(self):
+        print("TOUCHED")
+
 
 class GameScreen(Screen):
+    myIcon = ObjectProperty()
+    myName = StringProperty()
+
+    oppIcon = ObjectProperty()
+    oppName = StringProperty()
+
+    def __init__(self, **kw):
+        super(GameScreen, self).__init__(**kw)
+        self.FM = File_man()
+
+    #GAME_LOOP:: 
+    def on_enter(self):
+        print("%%%%%%%%%%%%%%%%%%\n\nG_S:::RESIZING\n")
+        Clock.schedule_interval(self.updateAll, 1)
+
+    def updateAll(self, inst):
+        #print("UPDATE_ALL..")
+        self.profiles()
+
+
     # -----------------------------------------------------------
-    # Deck
+    # Prayer Profiles
+    # -----------------------------------------------------------
+    
+    def profiles(self):
+        #MY_PROFILE
+        u_data = self.FM.read_file("SOCKET_DATA/Profile.txt", "*")
+        #print("ON_OPEN:HOME")
+        if len(u_data) > 5:
+            #for _ in u_data:
+            #    print("U_DATA: ", str(_))
+            try:
+                self.myName = str(u_data[1])
+                icon = str(u_data[6]) + str(u_data[5][0])
+                icon_img = "ASSETS/PlayerIcon/"+icon+".png"
+                self.myIcon = str(icon_img)
+            except Exception as e:
+                print("LOADING PLAYER ICON ERROR ::", str(e))
+                pass
+            pass
+
+        
+        #OPP_PROFILE
+        opp_data = self.FM.read_file("SOCKET_DATA/OppData.txt", "*")
+        if len(opp_data) > 2:
+            try:
+                self.oppName = str(opp_data[2])
+                opp_icon = str(opp_data[3])
+                opp_icon_img = "ASSETS/Opponent/"+opp_icon+".png"
+                self.oppIcon = str(opp_icon_img)
+            except Exception as e:
+                print("LOADING PLAYER ICON ERROR ::", str(e))
+
+    # -----------------------------------------------------------
+    # Player Turn
     # -----------------------------------------------------------
 
-    def deck_button(self, widget):
-        print('Deck')
+    def play_turn(self):
+
+        players_turn =  # ends after a move
+
+        if players_turn == True:
+
+            self.ids.Opponent_Unavailable_Icon.opacity = 1
+            self.ids.Player_Unavailable_Icon.opacity = 0
+
+            self.ids.Air.disabled = False
+            self.ids.Rune.disabled = False
+            self.ids.Pocked.disabled = False
+            self.ids.Deck_button.disabled = False
+
+        else:
+
+            self.ids.Opponent_Unavailable_Icon.opacity = 0
+            self.ids.Player_Unavailable_Icon.opacity = 1
+
+            self.ids.Air.disabled = True
+            self.ids.Rune.disabled = True
+            self.ids.Pocked.disabled = True
+            self.ids.Deck_button.disabled = True
+
+    # -----------------------------------------------------------
+    # Deck - to - Hand
+    # -----------------------------------------------------------
+
+    def hit_deck(self):
+        print("HIT_ME")
 
     # -----------------------------------------------------------
     # Tree Hand
@@ -876,92 +989,126 @@ class GameScreen(Screen):
         self.ids.Opponent_tokens.disabled = False
 
 
-
 class LobbyScreen(Screen):
+    myIcon = ObjectProperty()
     def __init__(self, **kw):
         super().__init__(**kw)
         self.FM = File_man()
+        self.matched = False
 
-    def set_up(self):
-        me = str(self.FM.read_file("SOCKET_DATA/Profile.txt", "*"))
-        mi = me.split("*")
+
+    def on_enter(self):
+        print("OPENING_LOBBY")
         try:
-            print("SENDING PROFILE:: ")
-            for _ in mi:
-                print("P:: ", str(_))
-            name = str(mi[0]).translate(str.maketrans('', '', string.punctuation))
-            icon = str(mi[3]).translate(str.maketrans('', '', string.punctuation))
-            data = "START*" + name + "*" + icon
-            self.FM.write_file("SOCKET_DATA/GAME.txt", data, "*", "w")
-            return "SENT"
-
+            self.profile()
         except Exception as e:
-            print(str(e))
+            print("PRO_FILE_LOADING ERROR:: ", str(e))
+
+        ret_val = self.Ready()
+        if ret_val == True:
+            MDApp.get_running_app().root.current = 'game'
+            print("OPENING_GAME_SCREEN")            
+        else:
+            print("FODIS")
+
+    def profile(self):
+        u_data = self.FM.read_file("SOCKET_DATA/Profile.txt", "*")
+        if len(u_data) > 5:
+            try:
+                icon = str(u_data[6]) + str(u_data[5][0])
+                icon_img = "ASSETS/PlayerIcon/"+icon+".png"
+                self.myIcon = str(icon_img)
+            except Exception as e:
+                print("LOADING PLAYER ICON ERROR:: ", str(e))
+
+
 
     def Ready(self):
         print("READY..")
-        print(str(self.set_up()))
-        ready = str(self.FM.read_file("SOCKET_DATA/SERVER.txt", "*"))
-        print("READY")
-        if "MATCH" in ready:
-            print("MATCHED!!")
-            if "MATCH1" in ready:
-                self.FM.write_file("SOCKET_DATA/Player.txt", "PL1", "*", "w")
-            elif "MATCH2" in ready:
-                self.FM.write_file("SOCKET_DATA/Player.txt", "PL2", "*", "w")
-            MDApp.get_running_app().root.current = "Game"
-            return
+        while self.matched != True:
+            ready = self.FM.read_file("SOCKET_DATA/GAME.txt", "*")
+            if ready:
+                print("R:: ", str(ready[0]))
+                print("READY")
+                if "MATCH" in str(ready[0]):
+                    print("MATCHED!!")
+                    if "MATCH1" in str(ready[0]):
+                        self.FM.write_file("SOCKET_DATA/Player.txt", "PL1", "*", "w")
+                        print("PLAYER_1")
+                    elif "MATCH2" in str(ready[0]):
+                        print("PLAYER_2")
+                        self.FM.write_file("SOCKET_DATA/Player.txt", "PL2", "*", "w")
+                    time.sleep(0.5)
+                    self.matched = True
+                    return True
+                else:
+                    pass
 
-        else:
-            self.ids['Lobby'].text = "WAITING FOR MATCH"
-            steady = self.steady()
-            if steady == True:
-                print("STEADY")
-                MDApp.get_running_app().root.current = "Game"
-                return
+    def back_on(self):
+        print("CANCELLED_LOBBY")
+        MDApp.get_running_app().root.current = 'home'
 
-    def steady(self):
-        print("...STEADY")
-        while True:
-
-            #            print("WAITING...")
-            ready = str(self.FM.read_file("SOCKET_DATA/SERVER.txt", "*"))
-            if "MATCH" in ready:
-                print("MATCHED!")
-                if "MATCH1" in ready:
-                    self.FM.write_file("SOCKET_DATA/Player.txt", "PL1", "*", "w")
-                elif "MATCH2" in ready:
-                    self.FM.write_file("SOCKET_DATA/Player.txt", "PL2", "*", "w")
-                return True
-            else:
-                time.sleep(0.0003)
-                self.ids['Lobby'].text = "WAITING FOR MATCH"
-                pass
-
+    def back_off(self):
+        print("BACK_TO_HOME")
 
 class RankLScreen(Screen):
+    user_name = StringProperty()
+
     def __init__(self, **kw):
         super().__init__(**kw)
-        pass
+        pro_data = File_man().read_file("SOCKET_DATA/Profile.txt", "*")
+        if len(pro_data) > 2:
+            self.user_name = str(pro_data[1])
+    
+    def rankg_on(self):
+        print("RANKG_ON")
 
+    def rankg_off(self):
+        print("RANKG_OFF")
+    
+    def back_on(self):
+        print("back_on")
+
+    def back_off(self):
+        print("back_off")
 
 class RankGScreen(Screen):
+    user_name = StringProperty()
+
     def __init__(self, **kw):
         super().__init__(**kw)
-        pass
+        pro_data = File_man().read_file("SOCKET_DATA/Profile.txt", "*")
+        if len(pro_data) > 2:
+            self.user_name = str(pro_data[1])
 
+    def rankl_on(self):
+        print("RANKl_ON")
+
+    def rankl_off(self):
+        print("RANKl_OFF")    
+
+    def back_on(self):
+        print("back_on")
+
+    def back_off(self):
+        print("back_off")
 
 class StoreScreen(Screen):
     def __init__(self, **kw):
         super().__init__(**kw)
         pass
 
-    def play(self):
+    def play_on(self):
         print("PLAYING_ADD")
 
-    # ---------------------------------------------------------------------------------------------
-    # THIS IS WHERE YOU PLAY THE VIDEO
+    def play_off(self):
+        pass
 
+    def back_on(self):
+        print("back_on")
+
+    def back_off(self):
+        print("back_off")
 
 class HomeScreen(Screen):
     my_name = StringProperty()
@@ -973,10 +1120,12 @@ class HomeScreen(Screen):
         self.sp_cards = ["0","1","2","3"]
         self.ads_bank = ""
         self.ads_count = 0
-        self.on_open()
         self.init_user = self.FM.read_file("SOCKET_DATA/Profile.txt", "*")
 
-    def on_open(self):
+    def store_off(self):
+        print("STORE")
+
+    def on_enter(self):
         print("IDS:?|", str(self.ids))
         u_data = self.FM.read_file("SOCKET_DATA/Profile.txt", "*")
         print("ON_OPEN:HOME")
@@ -991,7 +1140,11 @@ class HomeScreen(Screen):
             except Exception as e:
                 print("LOADING PLAYER ICON ERROR ::", str(e))
 
+    def rank_on(self):
+        print("RANK_ON")
 
+    def rank_off(self):
+        print("RANK_OFF")
 
     def button_sound(self):
         sound = SoundLoader.load('Sound/Button.wav')
@@ -1005,10 +1158,8 @@ class HomeScreen(Screen):
         if sound:
             sound.play()
 
-
     def open_settings(self):
         Setting().open()
-
 
     def test_recyle(self):
         MDApp.get_running_app().root.current = 'Game'
@@ -1046,6 +1197,17 @@ class HomeScreen(Screen):
     def move(self):
         MDApp.get_running_app().root.current = 'Lobby'
 
+    def playg_on(self):
+        print("READY__")
+        name = str(self.init_user[1])
+        gend = str(self.init_user[5])
+        icon = str(self.init_user[6])
+        sending = "LOBBY*"+name+"*"+str(gend[0])+icon+"*"
+        self.FM.write_file("SOCKET_DATA/OUT_BOUND.txt", sending, "*", "w")
+        MDApp.get_running_app().root.current = 'lobby'
+
+    def playg_off(self):
+        print("READY__??")
 
 class LoadingScreen(Screen):
     def __init__(self, **kw):
@@ -1056,6 +1218,7 @@ class LoadingScreen(Screen):
         self.AUTO_LOG = False
         self.sec = 0
         Clock.schedule_interval(self.update_time, 1)
+
 
     # AUTO_LOGIN
     def Just_Check(self):
@@ -1110,9 +1273,9 @@ class LoadingScreen(Screen):
                 L.open()
                 Clock.unschedule(self.update_time)
     
-        elif self.sec >=8:  # and self.AUTO_LOG == True:
+        elif self.sec >=8:# and self.AUTO_LOG == True:
             print("AUTO_LOGGIN_FAILED")
-            # self.FM.write_file("SOCKET_DATA/OUT_BOUND.txt", "ONLINE", "w")
+            #self.FM.write_file("SOCKET_DATA/OUT_BOUND.txt", "ONLINE", "w")
             MDApp.get_running_app().root.current = 'home'
             try:
                 L = Login()
@@ -1122,9 +1285,9 @@ class LoadingScreen(Screen):
                 print("POPUP_ERROR:: ", str(L))
 
 
-# ---------------------------------------------------------------
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # MAIN
-# ---------------------------------------------------------------
+# ********************************************************
 
 
 class WindowManager(ScreenManager):
@@ -1138,17 +1301,21 @@ class MyMDApp(MDApp):
         self.FM = File_man()
         self.conn = connections()
 
-        # CLEAR FILES
+        #CLEAR FILES
         self.FM.write_file("SOCKET_DATA/GAME.txt", "", "*", "w")
+        self.FM.write_file("SOCKET_DATA/DECK.txt", "", "*", "w")
+        self.FM.write_file("SOCKET_DATA/game_over.txt", "", "*", "w")
+        self.FM.write_file("SOCKET_DATA/Player.txt", "", "*", "w")
+
         self.FM.write_file("SOCKET_DATA/SERVER.txt", "", "*", "w")
         self.FM.write_file("SOCKET_DATA/ADS_BANK.txt", "", "*", "w")
         self.FM.write_file("SOCKET_DATA/OppData.txt", "", "*", "w")
-        self.FM.write_file("SOCKET_DATA/game_over.txt", "", "*", "w")
         self.FM.write_file("SOCKET_DATA/OUT_BOUND.txt", "", "*", "w")
         self.FM.write_file("SOCKET_DATA/IN_BOUND.txt", "", "*", "w")
 
-        # OPEN CONNS
+        #OPEN CONNS
         self.connections__()
+
 
     def connections__(self):
         try:
@@ -1166,13 +1333,14 @@ class MyMDApp(MDApp):
             print("\n\n!!INIT_CONNECTION_ERROR!!\n\n", str(e))
             raise SystemExit(1)
 
-        # self.sound_home = SoundLoader.load('Sound/HomeMusic.wav')
-        # self.sound_home.volume = .1
+
+        #self.sound_home = SoundLoader.load('Sound/HomeMusic.wav')
+        #self.sound_home.volume = .1
 
     def build(self):
         Builder.load_file("NoS.kv")
 
-        # if self.sound_home:
+        #if self.sound_home:
         #   self.sound_home.play()
 
         return WindowManager()
