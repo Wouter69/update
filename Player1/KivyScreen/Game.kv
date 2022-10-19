@@ -29,6 +29,15 @@
                 pos_hint: {'center_x': .5, 'y': .65}
 
             Image:
+                id: Opponent_Unavailable_Icon
+                source: "ASSETS/Opponent/OpponentUnavailable.png"
+                opacity: 0
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: .895, .34
+                pos_hint: {'center_x': .5, 'y': .65}
+
+            Image:
                 id: Opponent_Board
                 source: 'ASSETS/Opponent/Opponent_board.png'
                 allow_stretch: True
@@ -239,6 +248,15 @@
         Image:
             id: Player_Icon
             source: "ASSETS/PlayerIcon/CapricornM.png"
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: .28, .15
+            pos_hint: {'x': .64, 'y': .312}
+
+        Image:
+            id: Player_Unavailable_Icon
+            source: "ASSETS/PlayerIcon/PlayerUnavailable.png"
+            opacity: 0
             allow_stretch: True
             keep_ratio: False
             size_hint: .28, .15
@@ -845,7 +863,7 @@
                     source: "ASSETS/back/Card_Holder1.png"
                     size: self.size
                     pos: self.pos
-            opacity: 1
+            opacity: 0
             orientation: "vertical"
             size_hint: 1, None
             height: dp(326)
